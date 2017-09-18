@@ -1,0 +1,14 @@
+.container{
+    text-align: center;
+    color: olive;
+}
+
+.halfSize {
+    width: 35% ;
+    background-color:grey;
+    border-radius: 5px solid red;
+    display: inline-block;
+}
+.error {
+    color: red;
+}
