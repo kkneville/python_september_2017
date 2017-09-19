@@ -5,10 +5,29 @@
 
 .halfSize {
     width: 35% ;
-    background-color:grey;
+    background-color: white;
     border-radius: 5px solid red;
     display: inline-block;
+    vertical-align: top;
 }
 .error {
     color: red;
+}
+.red {
+    color:red;
+}
+.green {
+    color:green;
+}
+.blue {
+    color:blue;
+}
+
+.large_font {
+    font-size:24px;
+}
+.top_left {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 300px;
 }

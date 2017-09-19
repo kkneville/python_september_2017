@@ -20,13 +20,13 @@
                 <label>Choose color</label>
             </div>
             <div>
-                <input type="radio" name ="color">Red
+                <input type="radio" name ="color" value="red">Red
             </div>   
             <div>
-                <input type="radio" name ="color">Green        
+                <input type="radio" name ="color" value="green">Green        
             </div>
             <div>
-                <input type="radio" name ="color">Blue     
+                <input type="radio" name ="color" value="blue">Blue     
             </div>
             
             <div>
@@ -41,11 +41,20 @@
         {% if messages %}
             {% for message in messages %}
                 <p class ="error">{{ message }}</p>
-
             {% endfor %}
         {% endif %}    
-    
 
+    <div class="halfSize">
+        <form action="/clear" method="POST">
+            {% csrf_token %}
+            <div class = "top_left">
+                <input type="submit" value="Clear Session">
+            </div>
+        </form>
+        {% for word in request.session.word_array %}
+            <p class="{{ word.color }} {{ word.font_size }}">{{ word.value }} -added on  {{ word.time }}</p>
+        {% endfor %}    
+    </div>    
     
 </body>
 </html>
