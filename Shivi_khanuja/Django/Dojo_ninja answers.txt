@@ -1,0 +1,44 @@
+
+Adding Ninja to dojo Locations
+dojo = Dojo.objects.first()
+
+Ninja.objects.create(first_name="Tom", last_name="Smith", dojo=dojo)
+Ninja.objects.create(first_name="Kevin", last_name="Muller", dojo=dojo)
+Ninja.objects.create(first_name="Harry", last_name="Hines", dojo=dojo)
+
+
+Ninjas name in each location
+Dojo.objects.first().ninjas.all()
+<QuerySet [<Ninja: Tyler DaBomb>, <Ninja: Tom Smith>, <Ninja: Kevin Muller>, <Ninja: Harry Hines>]>
+>>> Dojo.objects.get(id=2).ninjas.all()
+<QuerySet [<Ninja: Harry Hamlin>, <Ninja: Tom Brady>, <Ninja: Zen Brad>]>
+>>> Dojo.objects.get(id=3).ninjas.all()
+<QuerySet [<Ninja: Smith Baker>, <Ninja: Sam Chun>, <Ninja: Red Head>]>
+
+Ninja.objects.first().dojo
+<Dojo: CodingDojo Silicon ValleyMountain ViewCA>
+
+
+Deleting all three dojos
+dojo=Dojo.objects.get(id=1)
+>>> dojo.delete()
+(5, {u'dojo_ninja.Ninja': 4, u'dojo_ninja.Dojo': 1})
+>>> dojo=Dojo.objects.get(id=2)
+>>> dojo.delete()
+(4, {u'dojo_ninja.Ninja': 3, u'dojo_ninja.Dojo': 1})
+>>> dojo=Dojo.objects.get(id=3)
+>>> dojo.delete()
+(4, {u'dojo_ninja.Ninja': 3, u'dojo_ninja.Dojo': 1})
+>>> Dojo.objects.all()
+<QuerySet []>
+
+Re-Creating Dojos
+Dojo.objects.create(name="Coding Dojo DC" , city="Washington DC" ,state="DC")
+<Dojo: Coding Dojo DCWashington DCDC>
+>>> Dojo.objects.create(name="Coding Dojo Chicago" , city="Chicago" ,state="IL")
+<Dojo: Coding Dojo ChicagoChicagoIL>
+>>> Dojo.objects.create(name="Coding Dojo Dallas" , city="Dallas" ,state="TX")
+<Dojo: Coding Dojo DallasDallasTX>
+
+
+
