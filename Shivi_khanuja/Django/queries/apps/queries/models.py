@@ -27,6 +27,7 @@ class Book(models.Model):
     title=models.CharField(max_length=255)
     author = models.CharField(max_length=255)
     users = models.ManyToManyField(User, related_name="book")
+    user=models.ForeignKey(User, related_name="created_books")
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
     def __str__(self):
