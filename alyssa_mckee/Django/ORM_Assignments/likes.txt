@@ -1,0 +1,93 @@
+##Create 3 different user accounts##
+In [8]: User.objects.first()
+Out[8]: <User: |User: Lea Flame thehotest@hotmail.com>
+
+In [9]: User.objects.create(first_name="Douglas", last_name="Adams", email="42@theuniverse.in")
+   ...:
+Out[9]: <User: |User: Douglas Adams 42@theuniverse.in>
+
+In [10]: User.objects.create(first_name="bob", last_name="bob", email="bob@bob.bob")
+Out[10]: <User: |User: bob bob bob@bob.bob>
+
+##Have the first user create 2 books.##
+book= Book()
+Out[19]: <Book: <Book: A heated debate idk>>
+
+In [20]: book.name = "Harry Potter and the Sorcerer's Stone"
+
+In [21]: book.desc = "wizards chess is a very dangerous game"
+
+In [22]: book.save()
+
+In [23]: book
+Out[23]: <Book: <Book: Harry Potter and the Sorcerer's Stone wizards chess is a very dangerous g
+ame>>
+
+##Have the second user create 2 other books.##
+In [14]: user = User.objects.get(id=2)
+
+In [15]: Book.objects.create(name="HitchHiker's Guide to the Universe", desc="DONT PANIC, the e
+    ...: arth is destroyed in order to build a Hyperspace bypass. Sorry", uploader=user)
+Out[15]: <Book: <Book: HitchHiker's Guide to the Universe DONT PANIC, the earth is destroyed in
+order to build a Hyperspace bypass. Sorry>>
+
+In [16]: Book.objects.create(name="The Restraunt at the End of the Universe", desc="The Ruler o
+    ...: f the Universe doesn't believe in it's existance.", uploader=user)
+Out[16]: <Book: <Book: The Restraunt at the End of the Universe The Ruler of the Universe doesn'
+t believe in it's existance.>>
+##Have the third user create 2 other books.##
+In [31]: user
+Out[31]: <User: |User: bob bob bob@bob.bob>
+
+In [32]: Book.objects.create(name="The Lightning Thief", desc="Zeus is a jerk", uploader=user)
+Out[32]: <Book: <Book: The Lightning Thief Zeus is a jerk>>
+
+In [33]: Book.objects.create(name="Sea of Monsters", desc="Family is Family, even if he only ha
+    ...: s one eye", uploader=user)
+Out[33]: <Book: <Book: Sea of Monsters Family is Family, even if he only has one eye>>
+
+##Have the first user like the last book and the first book##
+In [4]: Like.objects.create(user = User.objects.first(), book= Book.objects.last())
+Out[4]: <Like: Like object>
+
+In [5]: Like.objects.create(user = User.objects.first(), book= Book.objects.first())
+Out[5]: <Like: Like object>
+
+##Have the second user like the first book and the third book##
+In [3]: Like.objects.create(user = User.objects.get(id=2), book= Book.objects.first())
+Out[3]: <3 Like: Harry Potter and the Sorcerer's Stone liked by Douglas <3
+
+
+In [4]: Like.objects.create(user = User.objects.get(id=2), book= Book.objects.get(id=3))
+Out[4]: <3 Like: HitchHiker's Guide to the Universe liked by Douglas <3
+
+##Have the third user like all books##
+In [8]: for book in range(Book.objects.count()):
+   ...:      Like.objects.create(user = User.objects.get(id=3), book= Book.objects.get(id=book+
+   ...: 1))
+   ...:
+   ...:
+
+   
+##Display all users who like the first book##
+In [18]: Book.objects.first().liked_users.all()
+Out[18]:
+<QuerySet [<3 Like: Harry Potter and the Sorcerer's Stone liked by Lea <3
+, <3 Like: Harry Potter and the Sorcerer's Stone liked by Douglas <3
+, <3 Like: Harry Potter and the Sorcerer's Stone liked by bob <3
+
+##Display the user who uploaded the first book##
+In [19]: Book.objects.first().uploader
+Out[19]: |User: Lea Flame thehotest@hotmail.com |
+
+##Display all users who like the second book##
+In [22]: Book.objects.get(id=2).liked_users.all()
+Out[22]:
+<QuerySet [<3 Like: Harry Potter and the Chamber of Secrets liked by bob <3
+]>
+
+##Display the user who uploaded the second book##
+
+In [23]: Book.objects.get(id=2).uploader
+Out[23]: |User: Lea Flame thehotest@hotmail.com |
+

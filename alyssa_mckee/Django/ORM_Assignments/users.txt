@@ -1,0 +1,111 @@
+from django.db import models
+from django.core.exceptions import ValidationError
+import re
+# Create your models here.
+class User(models.Model):
+	first_name = 	models.CharField(max_length=255)
+	last_name = 	models.CharField(max_length=255)
+	email_address = models.CharField(max_length=255, unique=True)
+	age = 			models.IntegerField()
+	created_at = 	models.DateTimeField(auto_now_add=True)
+	updated_at = 	models.DateTimeField(auto_now=True)
+	
+	def __str__(self):
+		return "|User: {} {} {} {}|".format(self.first_name, self.last_name, self.email_address, self.age)
+	
+	def save(self, *args, **kwargs):
+		if len(self.first_name) == 0:
+			raise ValidationError('first_name can not be empty!')
+		
+		if not self.first_name.isalpha():
+			raise ValidationError("first name can not contain numbers or special characters")
+		if len(self.last_name) == 0:
+			raise ValidationError('last_name can not be empty!')
+		
+		if not self.first_name.isalpha():
+			raise ValidationError("first name can not contain numbers or special characters")
+		if self.age < 0:
+			raise ValidationError("age can not be negative")
+		
+		EMAIL_RE = re.compile(r'^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
+		if not EMAIL_RE.match(self.email_address):
+			raise ValidationError("email not valid")
+			
+		super().save(*args, **kwargs)
+----------------------------------------------------------------
+$ python manage.py makemigrations
+Migrations for 'users':
+  apps\users\migrations\0001_initial.py
+    - Create model User
+
+------------------------------------------------------------------
+
+Code Account@name MINGW64 ~/Desktop/DojoAssignments/Python/Django/DjangoORM/ORM_Assignments
+$ python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, sessions, users
+Running migrations:
+  Applying users.0001_initial... OK
+
+Code Account@name MINGW64 ~/Desktop/DojoAssignments/Python/Django/DjangoORM/ORM_Assignments
+$ ipython
+
+In [5]: user_list = User.objects.all()
+
+In [6]: print(user_list)
+<QuerySet []>
+
+#inputing data
+In [7]: User.objects.create(first_name="Alyssa", last_name="McKee", email_address="e@mail.com",
+   ...: age=23)
+Out[7]: <User: |User: Alyssa McKee e@mail.com 23|>
+
+In [8]: User.objects.create(first_name="Jason", last_name="McKee", email_address="e@mail.com", a
+   ...: ge=18)
+Out[8]: <User: |User: Jason McKee e@mail.com 18|>
+
+In [9]: User.objects.create(first_name="Kathryn", last_name="Ligon", email_address="kat@mail.com
+   ...: ", age=23)
+Out[9]: <User: |User: Kathryn Ligon kat@mail.com 23|>
+
+In [10]: User.objects.create(first_name="Ava", last_name="Nelson", email_address="avan@mail.com"
+    ...: , age=23)
+Out[10]: <User: |User: Ava Nelson avan@mail.com 23|>
+
+#get all users
+In [12]: User.objects.all()
+Out[12]: <QuerySet [<User: |User: Alyssa McKee e@mail.com 23|>, <User: |User: Jason McKee e@mail.
+com 18|>, <User: |User: Kathryn Ligon kat@mail.com 23|>, <User: |User: Ava Nelson avan@mail.com 2
+3|>]>
+
+#get last user
+In [14]: User.objects.last()
+Out[14]: <User: |User: Ava Nelson avan@mail.com 23|>
+
+#get first user
+In [15]: User.objects.first()
+Out[15]: <User: |User: Alyssa McKee e@mail.com 23|>
+
+#order by first name desc
+In [18]: User.objects.all().order_by("-first_name")
+Out[18]: <QuerySet [<User: |User: Kathryn Ligon kat@mail.com 23|>, <User: |User: Jason McKee e@ma
+il.com 18|>, <User: |User: Ava Nelson avan@mail.com 23|>, <User: |User: Alyssa McKee e@mail.com 2
+3|>]>
+
+#update
+In [19]: user = User.objects.get(id=3)
+
+In [20]: user
+Out[20]: <User: |User: Kathryn Ligon kat@mail.com 23|>
+
+In [21]: user.last_name = "krueger"
+
+In [22]: user.first_name = "katherine"
+
+In [23]: user.save
+Out[23]: <bound method Model.save of <User: |User: katherine krueger kat@mail.com 23|>>
+
+#delete
+In [24]: User.objects.get(id=4).delete()
+Out[24]: (1, {'users.User': 1})
+
