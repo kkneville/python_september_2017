@@ -45,7 +45,6 @@ class UserManager(models.Manager):
 			if 'email' not in errors:
 				errors['email'] = []
 			errors['email'].append("Email is required")
-	
 		if not EMAIL_REGEX.match(email):
 			if 'email' not in errors:
 				errors['email'] = []
@@ -53,9 +52,6 @@ class UserManager(models.Manager):
 			
 		return errors
 
-
-	def validate_edit():
-		pass
 
 	def create_user(self, form_data):
 		first_name = form_data['first_name']

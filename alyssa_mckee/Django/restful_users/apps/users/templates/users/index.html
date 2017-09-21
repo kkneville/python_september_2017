@@ -26,13 +26,13 @@
 			<td>{{user.created_at}}</td>
 			<td>
 				<a href="{%url 'show_user' id=user.id%}">Show</a> 
-				<a href="{%url 'edit' id=user.id%}">Edit</a> 
-				<a href="{%url 'delete' id=user.id%}">Delete</a>
+				<a href="{%url 'edit_user' id=user.id%}">Edit</a> 
+				<a href="{%url 'delete_user' id=user.id%}">Delete</a>
 			</td>
 			</tr>
 			{%endfor%}
 		{%endif%}
 	</table>
-<a href="{% url 'new' %}">Add a new user</a>
+<a href="{% url 'new_user' %}">Add a new user</a>
 </body>
 </html>

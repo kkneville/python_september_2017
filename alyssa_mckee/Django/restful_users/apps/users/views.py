@@ -9,7 +9,7 @@ def index(req):
 	return render(req, "users/index.html", context)
 
 def new(req):
-	#add to database
+	#show edit form
 	context = {}
 	if 'errors'in req.session:
 		context["errors"] = req.session['errors']
@@ -19,7 +19,7 @@ def new(req):
 	return render(req, "users/new_user.html", context)
 
 def edit(req, id):
-	#if a field empty, fill with current value
+	#show edit form
 	user = User.objects.filter(id=id)
 	if len(user) == 0: #if user doesn't exist
 		return redirect(reverse("all_users"))
@@ -37,6 +37,7 @@ def edit(req, id):
 	return render(req, "users/edit_user.html", context)
 
 def show(req, id):
+	#show the users profile
 	user = User.objects.filter(id=id)
 	if len(user) == 0:
 		return redirect(reverse("all_users"))
@@ -51,18 +52,22 @@ def show(req, id):
 	return render(req, "users/profile.html", context)
 	
 def create(req):
+	#handles new user post request
 	data = req.POST
 	errors = User.objects.validate(data)
 	if errors:
 		req.session['errors'] = errors
 		req.session['create_data'] = data
-		return redirect(reverse("new"))
+		return redirect(reverse("new_user"))
 	user = User.objects.create_user(data)
 	
 	return redirect(reverse("show_user", kwargs={'id':user.id}))
 	
 def destroy(req, id):
-	User.objects.destroy(id)
+	user = User.objects.filter(id=id)
+	if len(user) != 0: #if user exists, then destroy them. mercilously
+		User.objects.destroy(id)
+	
 	return redirect(reverse("all_users"))
 
 def update(req, id):
