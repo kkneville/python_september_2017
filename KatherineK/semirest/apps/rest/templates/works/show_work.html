@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>View Work</title>
+  </head>
+  <body>
+    <h2>{{ work.title }}</h2>
+
+    <p>Author: {{ work.author.firstname }} {{ work.author.lastname }}</p>
+    <p>Year Published: {{ work.year }}</p>
+    <p>Description: {{ work.desc }}</p>
+
+    <h3>View <a href="{% url "show_author_work" id=work.author.id %}">other works</a> by this author.</h3>
+
+    <a href="{% url "worksedit" workid=work.id %}">Edit</a>
+    <br>
+    <a href="/works/new">Add Another Work</a>
+    <br>
+    <a href="{% url "show" id=work.author.id %}">Return to Author</a>
+    <br>
+    <a href="/works">Return to All Works</a>
+
+  </body>
+</html>
