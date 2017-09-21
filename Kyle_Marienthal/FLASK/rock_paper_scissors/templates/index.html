@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ROCK PAPER SCISSORS</title>
+  </head>
+  <body>
+    <p><h4>Wins: {{win}}</h4></p>
+    <p><h4>Losses: {{lose}}</h4></p>
+    <p><h4>Ties: {{tie}}</h4></p>
+    <h1>Rock Paper Scissors</h1>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+          <p>{{ messages }}</p>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    <form action="/selection" method="post">
+      <input type="submit" name="rock" value="ROCK">
+      <input type="submit" name="paper" value="PAPER">
+      <input type="submit" name="scissors" value="SCISSORS">
+
+    </form>
+    <div>
+      <form action= '/reset' method="post">
+        <input type="submit" name="reset" value="RESET">
+      </form>
+    </div>
+
+
+
+  </body>
+</html>

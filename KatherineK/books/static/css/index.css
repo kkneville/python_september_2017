@@ -1,0 +1,20 @@
+body {
+  color: white;
+  font-weight: bold;
+}
+
+h1 {
+  background-color: rgb(49, 83, 119);
+  color: white;
+  width: 700px;
+}
+
+table {
+  background-color: rgb(153, 107, 90);
+  width: 700px;
+
+}
+
+form {
+  display: inline-block;
+}

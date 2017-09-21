@@ -1,0 +1,30 @@
+<html>
+<head>
+    <title>Index Page</title>
+</head>
+<body>
+    <!-- Stat Tracker -->
+    <p>Wins: {{ session['wins'] }}</p>
+    <p>Losses: {{ session['losses'] }}</p>
+    <p>Ties: {{ session['ties'] }}</p>
+    <!-- Header -->
+    <h4>Rock Paper Scissors</h4>
+    <!-- Message Output -->
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <!-- Game Options -->
+    <a href="/process/rock">rock</a>
+    <a href="/process/paper">paper</a>
+    <a href="/process/scissors">scissors</a>
+    <a href="/process/spock">spock</a>
+    <!-- Reset Button -->
+    {% if session['total'] > 0 %}
+        <p><a href="/reset">Reset</a></p>
+    {% endif %}
+</body>
+</html>

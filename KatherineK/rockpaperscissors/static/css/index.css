@@ -1,0 +1,52 @@
+body {
+  background-color: #c4eded;
+}
+
+h1 {
+  margin-left: 100px;
+}
+
+button {
+  width: 100px;
+  height: 30px;
+  margin: 30px;
+  background-color: #e8a594;
+  border-radius: 10px;
+  border-color: #c93d1a;
+  border-style: solid;
+  border-width: 1px;
+  margin-left: 30px;
+}
+
+button:hover {
+    background-color: #e2b9ae;
+}
+
+.plays {
+  display: inline-block;
+
+}
+.result, .score, .login {
+  background-color: #b5f2ee;
+  border-color: #173d3a;
+  margin-left: 30px;
+}
+
+.reset {
+  background-color: #e8a594;
+  border-color: #c93d1a;
+  margin-left: 30px;
+}
+
+.reset, .result, .score, .login {
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 1px;
+  padding-left: 10px;
+  width: 100px;
+
+}
+
+.login {
+  margin-left: 200px;
+}

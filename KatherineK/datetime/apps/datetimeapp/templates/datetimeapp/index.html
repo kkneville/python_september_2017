@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Datetime</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'datetimeapp/css/main.css' %}" media="screen" title="no title"  charset="utf-8">
+</head>
+
+<body>
+<h2>The current date and time:</h2>
+
+<div class="datetime">
+  {{ date }}
+  <br>
+  {{ time }}
+</div>
+
+</body>
+
+</html>

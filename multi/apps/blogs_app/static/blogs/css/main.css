@@ -1,0 +1,15 @@
+body {
+  background-color: rgb(179, 239, 196);
+  text-align: center;
+}
+
+h2, .datetime {
+  border-color: black;
+  border-style: dotted;
+  border-width: 2px;
+  width: 400px;
+}
+
+.datetime {
+  font-size: 24px;
+}

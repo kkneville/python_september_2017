@@ -1,0 +1,51 @@
+<html>
+<head>
+    <title>Ninja Gold</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}" />
+</head>
+<body>
+    <div id="container"> <!-- container div -->
+        <div id="gold"> <!-- gold div -->
+            <p>Your Gold: <input type="text" value="{{ gold }}" disabled></p>
+        </div> <!-- End gold div -->
+        <div id="buildings">
+            <div class="building"> <!-- Farm -->
+                <h5>Farm</h5>
+                <p>(earns 10-20 golds)</p>
+                <form action="/process_money/farm">
+                    <input type="hidden" value="ooga" name="hidden_input" />
+                    <button type="submit">Find Gold!</button>
+                </form>
+            </div> <!-- End Farm -->
+            <div class="building"> <!-- Cave -->
+                <h5>Cave</h5>
+                <p>(earns 5-10 golds)</p>
+                <form action="/process_money/cave" method="post">
+                    <button type="submit">Find Gold!</button>
+                </form>
+            </div> <!-- End Cave -->
+            <div class="building"> <!-- House -->
+                <h5>House</h5>
+                <p>(earns 2-5 golds)</p>
+                <form action="/process_money/house" method="post">
+                    <button type="submit">Find Gold!</button>
+                </form>
+            </div> <!-- End House -->
+            <div class="building"> <!-- Casino -->
+                <h5>Casino</h5>
+                <p>(earns/takes 0-50 golds)</p>
+                <form action="/process_money/casino" method="post">
+                    <button type="submit">Find Gold!</button>
+                </form>
+            </div> <!-- End Casino -->
+        </div> <!-- End buildings div -->
+        <p id="activities_label">Activities:</p>
+        <div id="activities"> <!-- activities div -->
+            <!-- Display All Activities -->
+            {% for activity in activities %}
+                <p class="{{ activity.color }}">{{ activity.message }}</p>
+            {% endfor %}
+        </div> <!-- End activities div -->
+    </div> <!-- End container div -->
+</body>
+</html>

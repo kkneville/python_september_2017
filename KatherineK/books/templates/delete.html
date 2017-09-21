@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Delete a Book</title>
+  </head>
+  <body>
+
+    <div class="form">
+      <h2>Delete {{ title }}?</h2>
+
+      <form action='/cancel' method='POST'>
+        <button type="submit" name="Cancel">Cancel</button>
+      </form>
+      <form action='/deleteconfirm/{{ idbooks }}' method='POST'>
+        <button type="submit" name="Delete">Delete Book</button>
+      </form>
+
+    </div>
+
+
+  </body>
+</html>

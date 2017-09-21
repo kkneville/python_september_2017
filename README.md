@@ -31,3 +31,34 @@ Videos:
  
  Intro to Flask:
  - Demo: https://youtu.be/OsNEMRwPH8w
+ 
+ Flask session/flash:
+ - Demo: https://youtu.be/yJMrrn_SiTM
+
+ Flask with MySQL:
+ - Demo: https://youtu.be/IeGtsCOESp8
+ 
+ Flask login and registration:
+ - Demo: https://youtu.be/Tylw4PWWR0o
+ 
+ Django Intro:
+ - Demo: https://youtu.be/VP3JhEZ94KI
+ 
+ Django Setup:
+ - Demo: https://youtu.be/LJzftXkXEBs
+ 
+ Django Basics:
+ - Demo: https://youtu.be/M8D5LMKkz5s
+ 
+ Django Models and Queries:
+ - Demo: https://youtu.be/pTeCV2tZwWI
+ 
+ Startint the Semi Restful Assignment:
+ - Demo: https://youtu.be/2nn2GHeaDoE
+ 
+ Group Projects: 
+ - Roshambo: https://youtu.be/r1cDHSA7Uu8
+ 
+ 
+ Algorithms:
+ - How to: https://youtu.be/va7o8NIaIp4

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>Library</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/index.js') }}"></script>
+
+</head>
+<body>
+  <div id="library">
+    <h1>Your Library</h1>
+
+    <table>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Published</th>
+        <th>Date Added</th>
+      </tr>
+      <tr>
+        {% for book in books %}
+        <td> {{ book['title'] }} </td>
+        <td> {{ book['author'] }} </td>
+        <td> {{ book['year_published'] }}</td>
+        <td> {{ book['created_at'] }}</td>
+        <td>
+            <form action="/delete/{{ book['idbooks'] }}" method="post">
+              <button type="submit" name="delete">delete</button>
+            </form>
+            <form action="/update/{{ book['idbooks'] }}" method="post">
+              <button type="submit" name="update">update</button>
+            </form>
+        </td>
+      </tr>
+        {% endfor %}
+    </table>
+    <br>
+      <form class="" action="/add" method="post">
+        <button type="submit" name="addbook">Add a Book</button>
+      </form>
+  </div>
+
+</body>
+</html>

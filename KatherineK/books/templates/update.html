@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Update a Book</title>
+  </head>
+  <body>
+
+    <div class="form">
+      <h2>Update {{ title }}</h2>
+      <form action='/updateconfirm/{{idbooks}}' method='POST'>
+        <label for="title">Title:<textarea rows=1 type="text" name="title">{{ title }}</textarea></label>
+        <br>
+        <br>
+        <label for="author">Author<textarea rows=1 type="text" name="author">{{ author }}</textarea></label>
+        <br>
+        <br>
+        <label for="year_published">Year Published:<textarea rows=1 type="number" name="year_published">{{ year_published }}</textarea></label>
+        <br>
+        <br>
+        <input type="submit" value="Update">
+      </form>
+      <form action='/update' method='POST'>
+        <button type="submit" name="cancel">Cancel</button>
+      </form>
+    </div>
+
+
+  </body>
+</html>

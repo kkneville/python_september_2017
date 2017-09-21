@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Front Page</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/rock.js') }}"></script>
+
+    <!-- <script>
+    $(document).ready(function(){
+      $('form').hide();
+    });
+
+    $(document).on("click", "button", function() {
+          if ($("this").siblings('form').is(":hidden")) {
+            $("this").siblings('form').show();
+          }
+          else {
+            $("this").siblings('form').hide();
+          }
+    });
+    </script> -->
+
+  </head>
+  <body>
+    <h1>Rock, Paper, Scissors</h1>
+
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for message in messages %}
+              <p>{{message}}</p>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+      
+    <div>
+      <!-- <button class="enter">Login</button> -->
+      <form action="/users/login" method="post">
+        Username: <input class="username" name="username"></input>
+        <br>
+        Password: <input class="password" name="password"></input>
+        <button class="userlogin" type="submit">Login</button>
+      </form>
+    </div>
+    <hr>
+    <br>
+    <div>
+      <!-- <button class="enter">Register</button> -->
+      <form action="/users/create" method="post">
+        Username: <input class="username" name="username"></input>
+        <br>
+        <br>
+        <br>
+        Email: <input class="email" name="email"></input>
+        <br>
+        Password: <input class="password" name="password"></input>
+        <button class="register" type="submit">Register</button>
+      </form>
+    </div>
+
+  </body>
+</html>

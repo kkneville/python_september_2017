@@ -1,0 +1,24 @@
+<html>
+<head>
+    <title>New User</title>
+</head>
+<body>
+    <h5>New User</h5>
+
+    <form action="{% url 'create_user' %}" method="post">
+        {% csrf_token %}
+        <label>First Name:</label>
+        <input type="text" name="first_name" />
+
+        <label>Last Name:</label>
+        <input type="text" name="last_name" />
+
+        <label>Email:</label>
+        <input type="email" name="email" />
+
+        <button type="submit">Create</button>
+    </form>
+
+    <a href="{% url 'all_users' %}">Go Back</a>
+</body>
+</html>
