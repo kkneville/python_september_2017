@@ -59,6 +59,9 @@ Videos:
  Login and Registration:
  - Demo: https://youtu.be/5jmJnLy3H_s
  
+ Belt Reviewer, How to start:
+ - Demo: https://youtu.be/YxJqvTISrEU
+ 
  Group Projects: 
  - Roshambo: https://youtu.be/r1cDHSA7Uu8
  
