@@ -62,6 +62,9 @@ Videos:
  Belt Reviewer, How to start:
  - Demo: https://youtu.be/YxJqvTISrEU
  
+ Deployment:
+ - Demo: https://youtu.be/GNrQ6wlr4tA
+ 
  Group Projects: 
  - Roshambo: https://youtu.be/r1cDHSA7Uu8
  
