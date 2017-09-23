@@ -1,0 +1,162 @@
+1.  Create 5 books with the following names: C sharp, Java, Python, PHP, Ruby
+
+    In [5]: Book.objects.create(name="C sharp")
+    Out[5]: <Book: 1 C sharp >
+
+    In [6]: Book.objects.create(name="Java")
+    Out[6]: <Book: 2 Java >
+
+    In [7]: Book.objects.create(name="Python")
+    Out[7]: <Book: 3 Python >
+
+    In [8]: Book.objects.create(name="PHP")
+    Out[8]: <Book: 4 PHP >
+
+    In [9]: Book.objects.create(name="Ruby")
+    Out[9]: <Book: 5 Ruby >
+
+2.  Create 5 different authors: Mike, Speros, John, Jadee, Jay
+
+    In [4]: Author.objects.create(first_name= "Mike", last_name="Smith", ema
+       ...: il = "msmith@smith.com")
+    Out[4]: <Author: 1 Mike Smith msmith@smith.com>
+
+    In [5]: Author.objects.create(first_name= "Speros", last_name="Kosta", e
+       ...: mail = "speros@speros.com")
+    Out[5]: <Author: 2 Speros Kosta speros@speros.com>
+
+    In [6]: Author.objects.create(first_name= "John", last_name="Jamison", e
+       ...: mail = "jjamison@jamison.com")
+    Out[6]: <Author: 3 John Jamison jjamison@jamison.com>
+
+    In [7]: Author.objects.create(first_name= "Jadee", last_name="Brown", em
+       ...: ail = "jadee.brown@gmail.com")
+    Out[7]: <Author: 4 Jadee Brown jadee.brown@gmail.com>
+
+    In [8]: Author.objects.create(first_name= "Jay", last_name="Green", emai
+       ...: l = "Jay_bird@gmail.com")
+    Out[8]: <Author: 5 Jay Green Jay_bird@gmail.com>
+
+3.  Add a new field in the authors table called 'notes'.  Make this a TextField.  Successfully create and run the migration files.
+    Successfully added and migrated.
+    Migrations for 'book_authors':
+    apps/book_authors/migrations/0004_author_notes.py:
+    - Add field notes to author
+    (djangoEnv) Joys-MacBook-Air:BooksAuthors joystoffer$ python manage.py makemigrations
+    No changes detected
+    (djangoEnv) Joys-MacBook-Air:BooksAuthors joystoffer$ python manage.py migrate
+    Operations to perform:
+    Apply all migrations: admin, auth, book_authors, contenttypes, sessions
+    Running migrations:
+    Rendering model states... DONE
+    Applying book_authors.0004_author_notes... OK
+
+4.  Change the name of the 5th book to C#
+
+    In [7]: Book.objects.get(id=5)
+    Out[7]: <Book: 5 Ruby >
+
+    In [8]: book = Book.objects.get(id=5)
+
+    In [9]: book.name = "C#"
+
+    In [10]: book.save()
+
+    In [11]: Book.objects.get(id=5)
+    Out[11]: <Book: 5 C# >
+
+5.  Change the first_name of the 5th author to Ketul
+    In [12]: author = Author.objects.get(id=5)
+
+    In [13]: author.first_name="Ketul"
+
+    In [14]: author.save()
+
+    In [15]: Author.objects.get(id=5)
+    Out[15]: <Author: 5 Ketul Green Jay_bird@gmail.com>
+
+6.  Assign the first author to the first 2 books
+7.  Assign the second author to the first 3 books
+8.  Assign the third author to the first 4 books
+9.  Assign the fourth author to the first 5 books (or in other words, all the books)
+(same process for 6-9)
+can also use:  Example for #8
+author = Author.objects.filter(id = 3)
+books = Book.objects.filter(id__in=[1,2,3,4])
+author.books.add(books)
+
+    In [2]: author=Author.objects.first()
+
+    In [3]: book=Book.objects.first()
+
+    In [4]: author.book.add(book)
+
+    In [7]: author.books.all()
+    Out[7]: <QuerySet [<Book: 1 C sharp >]>
+
+    In [8]: book.authors.all()
+    Out[8]: <QuerySet [<Author: 1 Mike Smith msmith@smith.com>]>
+
+    In [9]: author=Author.objects.first()
+
+    In [10]: book=Book.objects.get(id=2)
+
+    In [11]: author.books.add(book)
+
+    In [12]: author.books.all()
+    Out[12]: <QuerySet [<Book: 1 C sharp >, <Book: 2 Java >]>
+
+    In [13]: book.authors.all()
+    Out[13]: <QuerySet [<Author: 1 Mike Smith msmith@smith.com>]>
+
+10. For the 3rd book, retrieve all the authors
+  longer way:
+    In [81]: author = Author.objects.all()
+
+    In [82]: book = Book.objects.get(id=3)
+
+    In [83]: book.authors.all()
+    Out[83]: <QuerySet [<Author: 2 Speros Kosta speros@speros.com>, <Author: 3 John Jamison jjamison@jamison.com>, <Author: 4 Jadee Brown jadee.brown@gmail.com>]>
+
+  Shorter Way:
+    In [86]: Book.objects.get(id=3).authors.all()
+    Out[86]: <QuerySet [<Author: 2 Speros Kosta speros@speros.com>, <Author: 3 John Jamison jjamison@jamison.com>, <Author: 4 Jadee Brown jadee.brown@gmail.com>]>
+
+11. For the 3rd book, remove the first author
+
+    In [90]: book = Book.objects.get(id=3)
+
+    In [91]: author = Author.objects.get(id=1)
+
+    In [92]: book.authors.remove(author)
+
+    In [93]: book.authors.all()
+    Out[93]: <QuerySet [<Author: 2 Speros Kosta speros@speros.com>, <Author: 3 John Jamison jjamison@jamison.com>, <Author: 4 Jadee Brown jadee.brown@gmail.com>]>
+
+12. For the 2nd book, add the 5th author as one of the authors
+
+    In [94]: book = Book.objects.get(id=2)
+
+    In [95]: author = Author.objects.last()
+
+    In [96]: book.authors.add(author)
+
+    In [97]: book.authors.all()
+    Out[97]: <QuerySet [<Author: 1 Mike Smith msmith@smith.com>, <Author: 2 Speros Kosta speros@speros.com>, <Author: 3 John Jamison jjamison@jamison.com>, <Author: 4 Jadee Brown jadee.brown@gmail.com>, <Author: 5 Ketul Green Jay_bird@gmail.com>]>
+
+13. Find all the books that the 3rd author is part of
+
+    In [103]: author = Author.objects.filter(id=3)
+
+    In [106]: book = Book.objects.filter(authors=author)
+
+    In [107]: book
+    Out[107]: <QuerySet [<Book: 1 C sharp >, <Book: 2 Java >, <Book: 3 Python >, <Book: 4 PHP >]>
+
+14. Find all the books that the 2nd author is part of
+    In [6]: author = Author.objects.filter(id=2)
+
+    In [7]: book = Book.objects.filter(authors=author)
+
+    In [8]: book
+    Out[8]: <QuerySet [<Book: 1 C sharp >, <Book: 2 Java >, <Book: 3 Python >]>
