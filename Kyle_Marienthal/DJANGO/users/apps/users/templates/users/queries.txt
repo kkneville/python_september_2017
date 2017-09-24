@@ -1,0 +1,93 @@
+#####Create 3 dojos
+In [4]: Dojo.objects.create(name = "CodingDojo Silicon Valley", city= "Mountain
+   ...: View", state = "CA")
+Out[4]: <Dojo: 1 CodingDojo Silicon Valley Mountain View CA>
+
+In [5]: Dojo.objects.create(name = "CodingDojo Seattle", city= "Seattle", state
+   ...: = "WA")
+Out[5]: <Dojo: 2 CodingDojo Seattle Seattle WA>
+
+In [6]: Dojo.objects.create(name = "CodingDojo New York", city= "New York", stat
+   ...: e = "NY")
+Out[6]: <Dojo: 3 CodingDojo New York New York NY>
+
+#####Delete the three dojos you created (e.g. Dojo.objects.get(id=1).delete())
+
+In [7]: Dojo.objects.get(id=1).delete()
+Out[7]: (1, {u'dojo_ninjas.Dojo': 1, u'dojo_ninjas.Ninja': 0})
+
+In [8]: Dojo.objects.get(id=2).delete()
+Out[8]: (1, {u'dojo_ninjas.Dojo': 1, u'dojo_ninjas.Ninja': 0})
+
+In [9]: Dojo.objects.get(id=3).delete()
+Out[9]: (1, {u'dojo_ninjas.Dojo': 1, u'dojo_ninjas.Ninja': 0})
+
+######Create 3 additional dojos by using Dojo.objects.create
+
+In [11]: Dojo.objects.create(name = "CodingDojo Dallas", city= "Dallas", state =
+    ...:  "TX")
+Out[11]: <Dojo: 4 CodingDojo Dallas Dallas TX>
+
+In [12]: Dojo.objects.create(name = "CodingDojo Tulsa", city = "Tulsa", state ="
+    ...: OK")
+Out[12]: <Dojo: 5 CodingDojo Tulsa Tulsa OK>
+
+In [13]: Dojo.objects.create(name = "CodingDojo Chicago", city = "Chicago", stat
+    ...: e ="IL")
+Out[13]: <Dojo: 6 CodingDojo Chicago Chicago IL>
+
+#####Create 3 ninjas that belong to the first dojo you created
+#####Create 3 more ninjas and have them belong to the second dojo you created.
+#####Create 3 more ninjas and have them belong to the third dojo you created.
+
+In [14]: Ninja.objects.create(dojo = Dojo.objects.get(id=4),first_name= "Victor"
+    ...: , last_name= "Newman")
+Out[14]: <Ninja: 1 Victor Newman>
+
+In [15]: Ninja.objects.create(dojo = Dojo.objects.get(id=4),first_name= "Nikki",
+    ...:  last_name= "Newman")
+Out[15]: <Ninja: 2 Nikki Newman>
+
+In [16]: Ninja.objects.create(dojo = Dojo.objects.get(id=4),first_name= "Victori
+    ...: a", last_name= "Newman")
+Out[16]: <Ninja: 3 Victoria Newman>
+
+In [17]: Ninja.objects.create(dojo = Dojo.objects.get(id=5),first_name= "Nick",
+    ...: last_name= "Newman")
+Out[17]: <Ninja: 4 Nick Newman>
+
+In [18]: Ninja.objects.create(dojo = Dojo.objects.get(id=5),first_name= "Chelsea
+    ...: ", last_name= "Newman")
+Out[18]: <Ninja: 5 Chelsea Newman>
+
+In [19]: Ninja.objects.create(dojo = Dojo.objects.get(id=5),first_name= "Sharon"
+    ...: , last_name= "Newman")
+Out[19]: <Ninja: 6 Sharon Newman>
+
+In [20]: Ninja.objects.create(dojo = Dojo.objects.get(id=6),first_name= "Billy",
+    ...:  last_name= "Abbott")
+Out[20]: <Ninja: 7 Billy Abbott>
+
+In [21]: Ninja.objects.create(dojo = Dojo.objects.get(id=6),first_name= "Ashley"
+    ...: , last_name= "Abbott")
+Out[21]: <Ninja: 8 Ashley Abbott>
+
+In [22]: Ninja.objects.create(dojo = Dojo.objects.get(id=6),first_name= "Jack",
+    ...: last_name= "Abbott")
+Out[22]: <Ninja: 9 Jack Abbott>
+
+#####Find all ninjas in first dojo
+
+In [14]: Dojo.objects.get(id=4).ninjas.all()
+Out[14]: <QuerySet [<Ninja: 1 Victor Newman 4 CodingDojo Dallas Dallas TX>, <Ninja: 2 Nikki Newman 4 CodingDojo Dallas Dallas TX>, <Ninja: 3 Victoria Newman 4 CodingDojo Dallas Dallas TX>]>
+
+####Find all ninjas in last dojo
+
+In [16]: Dojo.objects.get(id=6).ninjas.all()
+Out[16]: <QuerySet [<Ninja: 7 Billy Abbott 6
+
+#####Add a new field in the Dojo class (found in your models.py) called 'desc'.
+ Allow 'desc' to hold long text (more than 255 characters). To forward engineer
+  the change, run the appropriate migration commands. Successfully run the
+   migration files and check the records to make sure the new field was added
+   successfully.

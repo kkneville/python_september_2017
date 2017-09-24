@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Chat Page</title>
+  </head>
+  <body>
+    <h1>The ultimate profanities filter</h1>
+    <form action="/process" method="post">
+      {% csrf_token %}
+      <label>Show me what you got:</label>
+      <input type="textarea" name="user_input" value="">
+      <input type="submit" value="Submit">
+      <!-- <textarea name='comment'></textarea>
+      <input type="text" name="" value=""> -->
+
+    </form>
+    {% for phrase in censored %}
+      {% if phrase %}
+        <p>Let's try make that more PG: {{ phrase }}</p>
+      {% endif %}
+    {% endfor %}
+    <form action="/reset" method="post">
+      {% csrf_token %}
+      <input type="submit" name="reset" value="RESET">
+    </form>
+  </body>
+</html>
