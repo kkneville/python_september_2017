@@ -62,6 +62,9 @@ Videos:
  Belt Reviewer, How to start:
  - Demo: https://youtu.be/YxJqvTISrEU
  
+ Belt Reviewer, Part II:
+ - Demo: https://youtu.be/wGSJuqBU4_c
+ 
  Deployment:
  - Demo: https://youtu.be/GNrQ6wlr4tA
  
