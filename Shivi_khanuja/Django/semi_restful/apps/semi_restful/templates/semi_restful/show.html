@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>Document</title>
+</head>
+<body>
+    <h1>{{ user.first_name }}'s Page</h1>
+        <a href=" {% url 'all_users' %} ">All Users</a>    
+    <h5>User {{ user.id }}</h5>
+    <p>Full Name: {{ user.first_name }}  {{ user.last_name }}</p>
+    <p>Email : {{ user.email }}</p>
+    <p>Created at : {{ user.created_at }}</p>
+
+
+</body>
+</html>
