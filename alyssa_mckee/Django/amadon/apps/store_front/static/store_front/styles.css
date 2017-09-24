@@ -1,0 +1,14 @@
+table{
+	border: 2px solid black;
+}
+table td, th{
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	padding: 5px;
+}
+table tr:nth-child(2n-1){
+	background: #EEE;
+}
+table th{
+	background: #AAA;
+}

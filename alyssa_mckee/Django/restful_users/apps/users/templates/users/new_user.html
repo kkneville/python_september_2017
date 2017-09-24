@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Add a New User</title>
+	{%load static%}
+	<link rel="stylesheet" type="text/css" href="{% static 'users/styles.css' %}">
+</head>
+<body>
+	<h1>Add a new user</h1>
+	
+	<form action="{% url 'create_user' %}" method="POST">
+		{%csrf_token%}
+		{%if errors %}
+			{%if errors.first_name%}
+				<ul>
+					{% for message in errors.first_name %}
+						<p class="error">{{ message }}</p>
+					{%endfor%}
+				</ul>
+			{%endif%}
+		{%endif%}
+		<label for="first_name">First Name:</label>
+		<input type="text" 
+		{% if data %}
+			{%if data.first_name%}
+				value="{{ data.first_name }}"
+			{%endif%}
+		{%endif%}
+		name="first_name" id="first_name">
+		
+		{%if errors %}
+			{%if errors.last_name%}
+				<ul>
+					{% for message in errors.last_name %}
+						<p class="error">{{ message }}</p>
+					{%endfor%}
+				</ul>
+			{%endif%}
+		{%endif%}
+		<label for="last_name">Last Name:</label>
+		<input type="text" 
+		{% if data %}
+			{%if data.last_name%}
+				value="{{ data.last_name }}"
+			{%endif%}
+		{%endif%}
+		name="last_name" id="last_name">
+		
+		{%if errors %}
+			{%if errors.email%}
+				<ul>
+					{% for message in errors.email %}
+						<p class="error">{{ message }}</p>
+					{%endfor%}
+				</ul>
+			{%endif%}
+		{%endif%}
+		<label for="email">Email:</label>
+		<input type="text" 
+		{% if data %}
+			{%if data.email%}
+				value="{{ data.email }}"
+			{%endif%}
+		{%endif%}
+		name="email" id="email">
+		<button type="submit">Create</button>
+	</form>
+	<a href="{% url 'all_users' %}">Go Back</a>
+</body>
+</html>

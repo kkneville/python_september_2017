@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Users</title>
+		{%load static%}
+	<link rel="stylesheet" type="text/css" href="{% static 'users/styles.css' %}">
+</head>
+<body>
+	<h1>Users</h1>
+	<table>
+		<tr>
+			<th>Id</th>
+			<th>Full Name</th>
+			<th>Email</th>
+			<th>created_at</th>
+			<th>actions</th>
+			
+		</tr>
+		{%if users%}
+			{%for user in users%}
+			<tr>
+			<td>{{user.id}}</td>
+			<td>{{user.first_name}} {{user.last_name}}</td>
+			<td>{{user.email}}</td>
+			<td>{{user.created_at}}</td>
+			<td>
+				<a href="{%url 'show_user' id=user.id%}">Show</a> 
+				<a href="{%url 'edit_user' id=user.id%}">Edit</a> 
+				<a href="{%url 'delete_user' id=user.id%}">Delete</a>
+			</td>
+			</tr>
+			{%endfor%}
+		{%endif%}
+	</table>
+<a href="{% url 'new_user' %}">Add a new user</a>
+</body>
+</html>
