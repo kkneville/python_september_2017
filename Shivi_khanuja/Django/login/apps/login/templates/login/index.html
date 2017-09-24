@@ -7,6 +7,15 @@
     <link rel="stylesheet" href="{% static 'login/style.css' %}">
 </head>
 <body>
+    {% with messages = get_flashed_message() }
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+
+    {% endif %}
     <h2>Register</h2>
     <form action="{% url 'register' %}" method="POST">
         {% csrf_token %}

@@ -18,4 +18,6 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^',include('apps.login.urls')),
+    url(r'^',include('apps.main_aap.urls')),
+
 ]
