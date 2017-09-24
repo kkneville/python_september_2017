@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Session Words</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'words/css/main.css' %}" media="screen" title="no title"  charset="utf-8">
+
+
+
+  </head>
+  <body>
+
+    <div id="left">
+      <h2>Add a new word:</h2>
+      <div class="form">
+        <form action="/add" method="post">
+        {% csrf_token %}
+
+          <input id="newword" type="text" name="word">
+          <br>
+
+          <label for="style">Style:</label>
+          <select name="style">
+            <option value="normal ">Regular</option>
+            <option value="italic ">Italic</option>
+          </select>
+          <br>
+
+          <p> Choose a color: </p>
+          <input type="radio" name="color" value="blue ">
+          <label for="blue">Blue</label>
+          <br>
+          <input type="radio" name="color" value="green ">
+          <label for="green">Green</label>
+          <br>
+          <input type="radio" name="color" value="pink ">
+          <label for="pink">Pink</label>
+          <br>
+          <input type="radio" name="color" value="brown ">
+          <label for="brown">Brown</label>
+          <br>
+
+          <label for="large">Large Font</label>
+          <input type="checkbox" name="large" value="large ">
+          <br>
+
+          <button type="submit">Add</button>
+        </form>
+      </div>
+
+
+      <div id="right">
+
+
+      <table>
+        <thead>
+          <tr>
+            <th>New Word:</th>
+            <th>Added:</th>
+          </tr>
+        </thead>
+
+
+        <tbody>
+          {% for entry in entries %}
+          <tr>
+            <td class="{{ entry.classes }}">
+             {{entry.word}}
+            </td>
+            <td>added at {{ entry.time}}, on {{entry.date}} </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <form action="/reset" method="post">
+      {% csrf_token %}
+        <button type="submit" name="reset">Clear</button>
+      </form>
+      </div>
+
+
+
+  </body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Shop at Amadon</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'gold/css/main.css' %}" media="screen" title="no title"  charset="utf-8">
+  </head>
+  <body>
+
+    <h1>Welcome to the Amadon Store</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+          <form action="/process" method="POST">
+          {% csrf_token %}
+          <tr>
+            <td>Dojo Tshirt</td>
+            <td>$19.99</td>
+            <td>
+              <select name="quantity">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+            </td>
+            <td>
+              <input type='hidden' name="price" value="19.99" />
+              <button type="submit" name="item" value="shirt">Buy!</button>
+            </td>
+          </tr>
+          </form>
+
+          <form action="/process" method="POST">
+          {% csrf_token %}
+          <tr>
+            <td>Dojo Sweater</td>
+            <td>$29.99</td>
+            <td>
+              <select name="quantity">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+            </td>
+            <td>
+              <input type='hidden' name="price" value="29.99" />
+              <button type="submit" name="item" value="sweater">Buy!</button>
+            </td>
+          </tr>
+          </form>
+
+          <form action="/process" method="POST">
+          {% csrf_token %}
+          <tr>
+            <td>Algorithms Book</td>
+            <td>$49.99</td>
+            <td>
+              <select name="quantity">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+            </td>
+            <td>
+              <input type='hidden' name="price" value="49.99" />
+              <button type="submit" name= "item" value="book">Buy!</button>
+            </td>
+          </tr>
+          </form>
+
+        </thead>
+      </table>
+    </form>
+  </body>
+</html>
