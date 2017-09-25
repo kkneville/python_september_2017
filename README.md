@@ -68,6 +68,9 @@ Videos:
  Deployment:
  - Demo: https://youtu.be/GNrQ6wlr4tA
  
+ Relations are Hard I:
+ - Demo: https://youtu.be/f4wi7NJ2EI4
+ 
  Group Projects: 
  - Roshambo: https://youtu.be/r1cDHSA7Uu8
  
