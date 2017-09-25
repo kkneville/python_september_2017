@@ -10,7 +10,7 @@ class Review(models.Model):
     content= models.TextField()
     rating= models.IntegerField()
     book=models.ForeignKey(Book,related_name="reviews")
-    User=models.ForeignKey(User,related_name="reviews")
+    user=models.ForeignKey(User,related_name="reviews")
     created_at= models.DateTimeField(auto_now_add=True)
     updated_at= models.DateTimeField(auto_now=True)
     objects=ReviewManager()
