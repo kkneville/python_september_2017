@@ -71,6 +71,9 @@ Videos:
  Relations are Hard I:
  - Demo: https://youtu.be/f4wi7NJ2EI4
  
+ Relations are Hard II:
+ - Demo: https://youtu.be/KfLPgTE5f9s
+ 
  Group Projects: 
  - Roshambo: https://youtu.be/r1cDHSA7Uu8
  
