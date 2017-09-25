@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>{{book.title}}</title>
+	
+</head>
+<body>
+	<header>
+		<a href="{% url 'dashboard' %}">Home</a>
+		<a href="{% url 'logout' %}">Logout</a>
+	
+	</header>
+	
+	<h1>{{book.title}}</h1>
+	<h3>Author: {{book.author.name}}</h3>
+	
+	<h2>Reviews:</h2>
+	
+	
+	{% for review in reviews %}
+			<div class="review">
+			<div class="rating">Rating: 
+			
+			{{review.rating}}
+			{% load static %}
+			{% if review.rating > 0 %}
+				<img src="{% static 'review_app/small_star.gif' %}" alt=""/>
+			{%endif%}
+			{% if review.rating > 1 %}
+				<img src="{% static 'review_app/small_star.gif' %}" alt=""/>
+			{%endif%}
+			{% if review.rating > 2 %}
+				<img src="{% static 'review_app/small_star.gif' %}" alt=""/>
+			{%endif%}
+			{% if review.rating > 3 %}
+				<img src="{% static 'review_app/small_star.gif' %}" alt=""/>
+			{%endif%}
+			{% if review.rating > 4 %}
+				<img src="{% static 'review_app/small_star.gif' %}" alt=""/>
+			{%endif%}
+			
+			</div>
+			<a href="{% url 'show_user' id=review.user.id %}">{{review.user.alias}}</a> says: {{review.content}}
+			<p>Posted on: {{review.created_at}}</p>
+			
+			{% if review.user.id == request.session.user_id %}
+				<a href="{% url 'destroy_review' id=review.id %}">Delete this review</a>
+			{%endif%}
+			
+		</div>
+	{%endfor%}
+	<hr/>
+	{% if messages %}
+		<ul>{% for message in messages %}
+				
+					<li class="error">{{message}}</li>
+				
+			{%endfor%}
+		</ul>
+	{%endif%}
+	<h3>Add a review:</h3>
+	<form action="{% url 'create_review' %}" method="POST">
+		{% csrf_token %}
+		<textarea name="content" id="content" cols="30" rows="10"></textarea>
+		<h3>Rating: 
+			<select name="rating" id="rating">
+				<option value="5">5</option>
+				<option value="4">4</option>
+				<option value="3">3</option>
+				<option value="2">2</option>
+				<option value="1">1</option>
+			
+			
+			
+			</select>
+			
+		<input type="hidden" name="book_id" value="{{book.id}}"/>
+		<input type="hidden" name="user_id" value="{{request.session.user_id}}"/>
+			Stars
+		</h3>
+	<button type="submit">Submit</button>
+	
+	</form>
+	
+</body>
+</html>

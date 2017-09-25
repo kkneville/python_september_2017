@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ninja Money</title>
+	{%load static%}
+	<link rel="stylesheet" type="text/css" href="{% static 'game/styles.css' %}">
+</script>
+</head>
+<body>
+	<h1>Ninja Gold Game</h1>
+	<div id="head">
+		<h3>your gold: <span>{{ request.session.gold }}g</span></h3>
+	</div>
+
+	<form action="game/process_money" method="POST">
+		{%csrf_token%}
+		<div id="farm">
+			<h2>Farm</h2>
+			<p>(earns 10-20 gold)</p>
+			<button id="farmbutton" name="building" value="farm" type="submit">Find Gold!</button>
+		</div>
+		<div id="cave">
+			<h2>Cave</h2>
+			<p>(earns 5-10 gold)</p>
+			<button name="building" value="cave" type="submit">Find Gold!</button>
+		</div>
+		<div id="house" > 
+			<h2>House</h2>
+			<p>(earns 2-5 gold)</p>
+			<button name="building" value="house" type="submit">Find Gold!</button>
+		</div>
+		<div id="casino">
+			<h2>Casino</h2>
+			<p>(earns/takes 0-50 gold)</p>
+			<button name="building" value="casino" type="submit">Find Gold!</button>
+		</div>
+
+	</form>
+	<footer>
+	<h3>activities:</h3>
+	<div id="activities">
+		{% if request.session.activities %}
+			{% for activity in request.session.activities %}
+				<p class="{{ activity.color }}">{{ activity.message  }}</p>
+		
+
+			{% endfor %}
+		{% endif %}
+	</div>
+	<form action="new" method="POST">{%csrf_token%}<button type="submit" value="submit">New Game</button></form>
+	</footer>
+
+
+
+
+</body>
+</html>

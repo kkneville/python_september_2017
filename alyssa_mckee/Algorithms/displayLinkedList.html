@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		
+		var className = function(argument){
+			this.methodname = function(){}
+			this.varmane;
+			
+		}
+
+		var LinkedList = function(){
+			this.head = null;
+			this.tail = null;
+			
+			this.addEnd = function(val){
+				node = new Node(val);
+				if(this.head == null){
+					this.head = node;
+					this.tail = node;
+				}
+				else{
+					this.tail.next = node;
+					this.tail = node;
+				}
+				return this;
+			}
+			
+			this.toString = function(){
+				var string = "";
+				for(var node = this.head; node!= null; node = node.next){
+					string+= "<Node value="+ node.val + ">";
+				}
+				return string;
+			}
+		}
+
+		var Node = function(val){
+			this.val = val;
+			this.next = null;
+		}
+
+		var myList = new LinkedList()
+		myList.addEnd(1).addEnd(2).addEnd(3).addEnd(4);
+		console.log(myList.toString());
+	
+	
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

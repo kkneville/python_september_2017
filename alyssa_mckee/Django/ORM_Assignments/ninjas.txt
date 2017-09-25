@@ -1,0 +1,70 @@
+#Create 3 dojos
+In [3]: Dojo.objects.create(name="Coding Dojo", city="Silicon Valley", state="CA")
+Out[3]: <Dojo: ||Dojo: Coding Dojo Silicon Valley CA ||>
+
+In [4]: Dojo.objects.create(name="Coding Dojo", city="Seattle", state="WA")
+Out[4]: <Dojo: ||Dojo: Coding Dojo Seattle WA ||>
+
+In [5]: Dojo.objects.create(name="Coding Dojo", city="New York", state="NY")
+Out[5]: <Dojo: ||Dojo: Coding Dojo New York NY ||>
+
+#delete those 3
+In [15]: Dojo.objects.filter(id__gt=0,id__lt=4).delete()
+Out[15]: (3, {'ninjas.Dojo': 3, 'ninjas.Ninja': 0})
+
+#create 3 more
+In [16]: Dojo.objects.create(name="Coding Dojo", city="Dallas", state="TX")
+Out[16]: <Dojo: ||Dojo: Coding Dojo Dallas TX ||>
+
+In [17]: Dojo.objects.create(name="Coding Dojo", city="Los Angelos", state="CA")
+Out[17]: <Dojo: ||Dojo: Coding Dojo Los Angelos CA ||>
+
+In [19]: Dojo.objects.create(name="Coding Dojo", city="Tulsa", state="OK")
+Out[19]: <Dojo: ||Dojo: Coding Dojo Tulsa OK ||>
+
+#create 3 ninjas in each dojo
+
+In [22]: texas = Dojo.objects.get(state="TX")
+
+In [24]: Ninja.objects.create(first_name="Alyssa", last_name="McKee", dojo_id=texas)
+Out[24]: <Ninja: <Ninja: Alyssa McKee dojo: ||Dojo: Coding Dojo Dallas TX ||>>
+
+In [25]: Ninja.objects.create(first_name="Kathryn", last_name="Ligon", dojo_id=texas)
+Out[25]: <Ninja: <Ninja: Kathryn Ligon dojo: ||Dojo: Coding Dojo Dallas TX ||>>
+
+In [30]: Ninja.objects.create(first_name="Ava", last_name="Nelson", dojo_id=texas)
+Out[30]: <Ninja: <Ninja: Ava Nelson dojo: ||Dojo: Coding Dojo Dallas TX ||>>
+
+In [27]: oklahoma = Dojo.objects.get(state="OK")
+
+In [29]: Ninja.objects.create(first_name="Izuku", last_name="Midoriya", dojo_id=oklahoma)
+Out[29]: <Ninja: <Ninja: Izuku Midoriya dojo: ||Dojo: Coding Dojo Tulsa OK ||>>
+
+In [31]: Ninja.objects.create(first_name="Tenya", last_name="IIda", dojo_id=oklahoma)
+Out[31]: <Ninja: <Ninja: Tenya IIda dojo: ||Dojo: Coding Dojo Tulsa OK ||>>
+
+In [32]: Ninja.objects.create(first_name="Mei", last_name="Hatsume", dojo_id=oklahoma)
+Out[32]: <Ninja: <Ninja: Mei Hatsume dojo: ||Dojo: Coding Dojo Tulsa OK ||>>
+
+In [38]: la = Dojo.objects.get(id=5)
+
+In [40]: Ninja.objects.create(first_name="Naruto", last_name="Uzumaki", dojo_id=la)
+Out[40]: <Ninja: <Ninja: Naruto Uzumaki dojo: ||Dojo: Coding Dojo Los Angelos CA ||>>
+
+In [41]: Ninja.objects.create(first_name="Hinata", last_name="Hyuga", dojo_id=la)
+Out[41]: <Ninja: <Ninja: Hinata Hyuga dojo: ||Dojo: Coding Dojo Los Angelos CA ||>>
+
+In [42]: Ninja.objects.create(first_name="Rock", last_name="Lee", dojo_id=la)
+Out[42]: <Ninja: <Ninja: Rock Lee dojo: ||Dojo: Coding Dojo Los Angelos CA ||>>
+
+#get all ninjas in first dojo
+In [51]: Ninja.objects.all().filter(dojo_id=Dojo.objects.first())
+Out[51]: <QuerySet [<Ninja: <Ninja: Alyssa McKee dojo: ||Dojo: Coding Dojo Dallas TX ||>>, <Ninja
+: <Ninja: Kathryn Ligon dojo: ||Dojo: Coding Dojo Dallas TX ||>>, <Ninja: <Ninja: Ava Nelson dojo
+: ||Dojo: Coding Dojo Dallas TX ||>>]>
+
+#get all ninjas in the last dojo
+In [52]: Ninja.objects.all().filter(dojo_id=Dojo.objects.last())
+Out[52]: <QuerySet [<Ninja: <Ninja: Izuku Midoriya dojo: ||Dojo: Coding Dojo Tulsa OK ||>>, <Ninj
+a: <Ninja: Tenya IIda dojo: ||Dojo: Coding Dojo Tulsa OK ||>>, <Ninja: <Ninja: Mei Hatsume dojo:
+||Dojo: Coding Dojo Tulsa OK ||>>]>

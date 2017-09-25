@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>Add a Book and a Re</title>
+	<style type="text/css">
+		h3{
+			display: inline-block;
+			margin: 0px;
+			padding: 0px;
+			vertical-align: top;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<a href="{% url 'dashboard' %}">Home</a>
+		<a href="{% url 'logout' %}">Logout</a>
+	</header>
+	
+	<h1>Add a New Book Title and a Review:</h1>
+	{% if messages %}
+		<ul>{% for message in messages %}
+				
+					<li class="error">{{message}}</li>
+				
+			{%endfor%}
+		</ul>
+	{%endif%}
+	
+	<form action="{% url 'create' %}" method="POST">
+		{% csrf_token %}
+		<h3>Book Title</h3>
+		<input type="text" name="title" id="title"/>
+		<br/>
+		<h3>Author:</h3>
+		<br/>
+		<label for="existing_author">Choose from the list:</label>
+		<select name="existing_author" id="existing_author">
+			
+			
+			<option value="" selected>Authors</option>
+			{for author in unique list of authors }
+			{% for author in authors %}
+				<option value="{{author.id}}">{{author.name}}</option>
+			{%endfor%}
+		
+		</select>
+		<br/>
+		<label for="new_author">Or add a new author:</label>
+		<input type="text" name="new_author" id="author"/>
+		
+		<br/>
+		<h3>Review:</h3>
+		<textarea name="content" id="content" cols="30" rows="10"></textarea>
+		<br/>
+		
+		<h3>Rating: 
+			<select name="rating" id="rating">
+				<option value="5">5</option>
+				<option value="4">4</option>
+				<option value="3">3</option>
+				<option value="2">2</option>
+				<option value="1">1</option>
+			
+			
+			
+			</select>
+			
+		
+			Stars
+		</h3>
+		<br/>
+		<input type="hidden" value="{{request.session.user_id}}" name="user_id"/>
+	<button type="submit">Add Book and Review</button>
+	</form>
+</body>
+</html>

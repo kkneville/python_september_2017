@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'session_words/style.css' %}">
+    <title>Session Words</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Session Words</h2>
+    </div>    
+    <div class="halfSize">    
+        <form action="/words" method = "post">
+            {% csrf_token %}
+            <h2>Add a new word</h2>
+            <div>
+                <input type="text" name="word">
+            </div>
+            <div>
+                <label>Choose color</label>
+            </div>
+            <div>
+                <input type="radio" name ="color" value="red">Red
+            </div>   
+            <div>
+                <input type="radio" name ="color" value="green">Green        
+            </div>
+            <div>
+                <input type="radio" name ="color" value="blue">Blue     
+            </div>
+            
+            <div>
+                <input type="checkbox"name ="font" value="font">show in BIG fonts!
+            </div>
+            <div>
+                <input type="submit" value="Add to Session">
+            </div>    
+        </form>
+    </div>
+    
+        {% if messages %}
+            {% for message in messages %}
+                <p class ="error">{{ message }}</p>
+            {% endfor %}
+        {% endif %}    
+
+    <div class="halfSize">
+        <form action="/clear" method="POST">
+            {% csrf_token %}
+            <div class = "top_left">
+                <input type="submit" value="Clear Session">
+            </div>
+        </form>
+        {% for word in request.session.word_array %}
+            <p class="{{ word.color }} {{ word.font_size }}">{{ word.value }} -added on  {{ word.time }}</p>
+        {% endfor %}    
+    </div>    
+    
+</body>
+</html>

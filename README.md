@@ -53,6 +53,24 @@ Videos:
  Django Models and Queries:
  - Demo: https://youtu.be/pTeCV2tZwWI
  
+ Starting the Semi Restful Assignment:
+ - Demo: https://youtu.be/2nn2GHeaDoE
+ 
+ Login and Registration:
+ - Demo: https://youtu.be/5jmJnLy3H_s
+ 
+ Belt Reviewer, How to start:
+ - Demo: https://youtu.be/YxJqvTISrEU
+ 
+ Belt Reviewer, Part II:
+ - Demo: https://youtu.be/wGSJuqBU4_c
+ 
+ Deployment:
+ - Demo: https://youtu.be/GNrQ6wlr4tA
+ 
+ Relations are Hard I:
+ - Demo: https://youtu.be/f4wi7NJ2EI4
+ 
  Group Projects: 
  - Roshambo: https://youtu.be/r1cDHSA7Uu8
  

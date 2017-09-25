@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>SUCCESS</title>
+  </head>
+  <body>
+    <h1>Welcome {{% user.name %}}</h1>
+    <form action= "{% url 'review_page' %}">
+      {% csrf_token %}
+      <input type="submit" value="Add Book and Review">
+    </form>
+    <form action= "{% url 'logout' %}">
+      {% csrf_token %}
+      <input type="submit" value="Logout">
+    </form>
+
+    <h3>Recent Book Reviews:</h3>
+<!-- loop through the book reviews here
+    <ul>
+      <li></li>
+    </ul>
+    -->
+    <h3>Other Books with Reviews:</h3>
+<!-- loop through all books containing a review here
+    <ul>
+      <li></li>
+    </ul>
+    -->
+
+
+
+  </body>
+</html>
