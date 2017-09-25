@@ -1,0 +1,15 @@
+<html>
+<head>
+    <title>All Credit Cards</title>
+</head>
+<body>
+    <h4>{{ user.first_name }}'s Credit Cards</h4>
+    {% for card in user.credit_cards.all %}
+        <hr>
+        <p>Name: {{ card.name }}</p>
+        <p>Number: {{ card.number }}</p>
+        <p>Exp Date: {{ card.exp_date }}</p>
+        <p>CVV: {{ card.cvv }}</p>
+    {% endfor %}
+</body>
+</html>

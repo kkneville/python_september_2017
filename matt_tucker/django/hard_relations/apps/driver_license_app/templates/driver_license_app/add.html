@@ -1,0 +1,25 @@
+<html>
+<head>
+    <title></title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static '/css/index.css' %}" media="screen" title="no title" charset="utf-8" />
+</head>
+<body>
+    <h4>Add Driver's License</h4>
+
+    <form action="{% url 'create_license' %}" method="post">
+        {% csrf_token %}
+
+        <label>Driver's License Number: </label>
+        <input type="text" name="number" />
+
+        <label>Name: </label>
+        <input type="text" name="name" />
+
+        <label>Expiration Date: </label>
+        <input type="date" name="exp_date" />
+
+        <button type="submit">Create</button>
+    </form>
+</body>
+</html>
