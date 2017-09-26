@@ -59,4 +59,10 @@ def logout(request):
 
     return redirect(reverse('landing'))
 
+def show(request,id):
+    user = User.objects.get(id=id)
+    context = {
+        'user':user,   
+    }
 
+    return render(request,'login/show.html',context)

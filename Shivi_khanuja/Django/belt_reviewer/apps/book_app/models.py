@@ -2,7 +2,20 @@ from __future__ import unicode_literals
 from django.db import models
 
 class BookManager(models.Manager):
-    pass
+    def validate(self, form_data):
+        errors = []
+        if len(form_data['title']) == 0:
+            errors.append("Title is required")
+        if len(form_data['author']) == 0:
+            errors.append("Author is required")    
+
+        return errors
+
+    def create_book(self, form_data):
+        return self.create(
+            title=form_data['title'],
+            author=form_data['author'],
+    )    
 
 
 class Book(models.Model):
