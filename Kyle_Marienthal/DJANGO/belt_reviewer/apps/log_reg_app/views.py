@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
 from .models import User
+from ..review_app.models import Review
 # Create your views here.
 
 def flash_errors(errors, request):
@@ -66,3 +67,9 @@ def success(request):
     print '*****log_reg success method*****'
 
     return redirect(reverse('dashboard'))
+
+def user_info(request, id):
+    context = {
+    'current_user':current_user(request)
+    }
+    return render(request, 'log_reg_app/user_info.html', context)

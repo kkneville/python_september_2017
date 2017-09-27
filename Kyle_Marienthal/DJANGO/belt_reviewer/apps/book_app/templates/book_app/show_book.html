@@ -19,7 +19,7 @@
     {% for review in book.reviews.all %}
       <h4>content: {{review.content}}</h4>
       <h4>rating: {{review.rating}}</h4>
-      <h4>name: <a href="/users/{{ review.user.id }}">{{review.user.name}}</a></h4>
+      <h4>name: <a href="{% url 'user_info' id=review.user.id %}">{{review.user.name}}</a></h4>
       <h4>**********************************</h4>
       <!-- <p>alias: {{review.user.alias}}</p>
       <p>email: {{review.user.email}}</p>

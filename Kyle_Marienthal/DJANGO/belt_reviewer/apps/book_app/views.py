@@ -19,7 +19,9 @@ def book(request):
     newest_reviews = reviews.order_by('-created_at')[:3]
     context = {
         'current_user': current_user(request),
-        'newest_reviews' : newest_reviews
+        'newest_reviews' : newest_reviews,
+        'leftovers' : Review.objects.remaining_books()
+
     }
     print '*****youre in the success method of book_app*****'
     return render(request, 'book_app/books.html', context)
