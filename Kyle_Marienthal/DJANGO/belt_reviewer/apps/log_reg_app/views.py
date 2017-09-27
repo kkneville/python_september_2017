@@ -38,6 +38,7 @@ def register(request):
         flash_errors(errors, request)
         # the errors argument is supplied by the validate_registration function
     return redirect(reverse('landing'))
+
 def login(request):
     print '*****log_reg login method*****'
 
@@ -69,7 +70,9 @@ def success(request):
     return redirect(reverse('dashboard'))
 
 def user_info(request, id):
+    titles = Review.objects.user_book_reviews(id)
     context = {
-    'current_user':current_user(request)
+    'current_user':current_user(request),
+    'titles' : titles
     }
     return render(request, 'log_reg_app/user_info.html', context)

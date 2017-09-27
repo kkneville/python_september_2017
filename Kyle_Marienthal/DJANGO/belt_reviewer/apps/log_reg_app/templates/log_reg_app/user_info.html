@@ -17,9 +17,9 @@
 
 <h3>Email: {{current_user.email}}</h3>
 
-<h3>Number of Reviews: {{ user.reviews.count }}</h3>
+<h3>Number of Reviews: {{ current_user.reviews.count }}</h3>
 
 <h3>Posted Reviews on the following books:</h3>
-  {% for review in user.reviews.all %}
-    <h3>Title: {{ review.title }}</h3>
+  {% for title in titles %}
+    <h3>Title: {{ title }}</h3>
   {% endfor %}

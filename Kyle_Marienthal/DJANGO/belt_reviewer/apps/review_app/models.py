@@ -32,19 +32,14 @@ class ReviewManager(models.Manager):
             remains = books.exclude(id__in=newest_3_ids)
         return remains
 
-    # def user_book_reviews(self, id):
-    #     user = User.objects.filter(id=id).first()
-    #     user_reviews = user.reviews.all()
-    #     count = 0
-    #     answer = {
-    #         'titles' : [],
-    #         'count' : 0
-    #         }
-    #     for review in user_reviews:
-    #         answer['titles'].append(review.book.title)
-    #         answer['count'] += 1
-    #     return answer
-    # dont need this because count is a built in method
+    def user_book_reviews(self, id):
+        user = User.objects.filter(id=id).first()
+        user_reviews = user.reviews.all()
+        titles = []
+
+        for review in user_reviews:
+            titles.append(review.book.title)
+        return titles
 
 
 
