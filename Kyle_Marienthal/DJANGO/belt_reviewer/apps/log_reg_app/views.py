@@ -1,27 +1,28 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
 from .models import User
+from ..review_app.models import Review
 # Create your views here.
 
 def flash_errors(errors, request):
-    print '*****youre in the flash_errors method*****'
+    print '*****log_reg flash_errors method*****'
 
     for error in errors:
         messages.error(request, error)
 
 def index(request):
-    print '*****youre in the index method*****'
+    print '*****log_reg index method*****'
 
     return render(request, 'log_reg_app/index.html')
 
 def current_user(request):
-    print '*****youre in the current_user method*****'
+    print '*****log_reg current_user method*****'
 
     if 'user_id' in request.session:
         return User.objects.get(id=request.session['user_id'])
 
 def register(request):
-    print '*****youre in the register method*****'
+    print '*****log_reg register method*****'
 
     if request.method == 'POST':
         errors = User.objects.validate_registration(request.POST)
@@ -37,8 +38,9 @@ def register(request):
         flash_errors(errors, request)
         # the errors argument is supplied by the validate_registration function
     return redirect(reverse('landing'))
+
 def login(request):
-    print '*****youre in the login method*****'
+    print '*****log_reg login method*****'
 
     if request.method == 'POST':
         # validate the login data
@@ -55,7 +57,7 @@ def login(request):
     return redirect(reverse('landing'))
 
 def logout(request):
-    print "*****youre in the logout method*****"
+    print "*****log_reg logout method*****"
     if 'user_id' in request.session:
         request.session.pop('user_id')
     return redirect(reverse('landing'))
@@ -63,6 +65,14 @@ def logout(request):
 def success(request):
     # this method is no longer used because you added other apps this used to take you to the dead
     # success page
-    print '*****youre in the success method*****'
+    print '*****log_reg success method*****'
 
     return redirect(reverse('dashboard'))
+
+def user_info(request, id):
+    titles = Review.objects.user_book_reviews(id)
+    context = {
+    'current_user':current_user(request),
+    'titles' : titles
+    }
+    return render(request, 'log_reg_app/user_info.html', context)

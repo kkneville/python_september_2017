@@ -25,6 +25,7 @@ def index(request):
     return render(request, 'index.html', context)
 
 def display(request):
+    
     censored_input = profanity.censor(request.POST['user_input'])
 
     request.session['result'].insert(0, censored_input)

@@ -1,0 +1,25 @@
+<form action= "{% url 'logout' %}">
+  {% csrf_token %}
+  <input type="submit" value="Logout">
+</form>
+<form action= "{% url 'dashboard' %}">
+  {% csrf_token %}
+  <input type="submit" value="Home">
+</form>
+<form action= "{% url 'add_book' %}">
+  {% csrf_token %}
+  <input type="submit" value="Add Book and Review">
+</form>
+
+<h1>User Alias: {{current_user.alias}}</h1>
+
+<h3>Name: {{current_user.name}}</h3>
+
+<h3>Email: {{current_user.email}}</h3>
+
+<h3>Number of Reviews: {{ current_user.reviews.count }}</h3>
+
+<h3>Posted Reviews on the following books:</h3>
+  {% for title in titles %}
+    <h3>Title: {{ title }}</h3>
+  {% endfor %}

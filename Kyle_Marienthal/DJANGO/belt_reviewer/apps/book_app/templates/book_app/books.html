@@ -5,8 +5,8 @@
     <title>SUCCESS</title>
   </head>
   <body>
-    <h1>Welcome {{% user.name %}}</h1>
-    <form action= "{% url 'review_page' %}">
+    <h1>Welcome {{ current_user.name }}</h1>
+    <form action= "{% url 'add_book' %}">
       {% csrf_token %}
       <input type="submit" value="Add Book and Review">
     </form>
@@ -17,16 +17,25 @@
 
     <h3>Recent Book Reviews:</h3>
 <!-- loop through the book reviews here
+content rating book and user
+-->
     <ul>
-      <li></li>
+      {% for review in newest_reviews %}
+        <li><a href="{% url 'show_book' id=review.book.id %}">{{ review.book.title }}</a></li>
+        <li>{{ review.rating }}</li>
+        <li><a href="{% url 'user_info' id=review.user.id %}"></a>{{ review.user.name }} says: {{ review.content }}</li>
+        <li>{{ review.created_at}}</li>
+        *******************************
+      {% endfor %}
     </ul>
-    -->
     <h3>Other Books with Reviews:</h3>
-<!-- loop through all books containing a review here
-    <ul>
-      <li></li>
-    </ul>
-    -->
+<!-- loop through all books containing a review here-->
+<ul>
+  {% for book in leftovers %}
+    <li><a href="{% url 'show_book' id=book.id %}">{{ book.title }}</a></li>
+    *******************************
+  {% endfor %}
+</ul>
 
 
 

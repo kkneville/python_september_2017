@@ -42,17 +42,18 @@ def home():
     return render_template("login_registration.html")
 
 @app.route("/process", methods = ["POST"])
+# print request.form
 def process():
     salt = binascii.b2a_hex(os.urandom(15))
     hashed_pw = md5.new(request.form['password'] + salt).hexdigest()
-    query = "INSERT INTO users(name, username, password, app_date, created_at, updated_at, salt) VALUES(:name, :username, :password, :app_date, now(), now(), :salt)"
+    query = "INSERT INTO users(name, username, password, appointment_date, created_at, updated_at, salt) VALUES(:name, :username, :password, :appointment_date, now(), now(), :salt)"
 # the data library needs to be in the same order
     data = {
-        'name':request.form['name'],
-        'username':request.form['username'],
-        'password':request.form['password'],
-        'app_date':request.form['appointment_date'],
-        'salt':request.form['salt'],
+        'name': request.form['name'],
+        'username': request.form['username'],
+        'password': hashed_pw,
+        'appointment_date': request.form['appointment_date'],
+        'salt': salt,
 
     }
     print '**************',mysql.query_db(query, data)
