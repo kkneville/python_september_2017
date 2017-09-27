@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Book and its review</title>
+  </head>
+  <body>
+    <form action= "{% url 'logout' %}">
+      {% csrf_token %}
+      <input type="submit" value="Logout">
+    </form>
+    <form action= "{% url 'dashboard' %}">
+      {% csrf_token %}
+      <input type="submit" value="Home">
+    </form>
+    {{ current_user.name }}
+    <h4>Book: {{ book.title }}</h4>
+    <h4>Author: {{book.author}}</h4>
+    {% for review in book.reviews.all %}
+      <h4>content: {{review.content}}</h4>
+      <h4>rating: {{review.rating}}</h4>
+      <h4>name: <a href="/users/{{ review.user.id }}">{{review.user.name}}</a></h4>
+      <h4>**********************************</h4>
+      <!-- <p>alias: {{review.user.alias}}</p>
+      <p>email: {{review.user.email}}</p>
+      <p>password: {{review.user.password}}</p>
+      <p>password: {{review.created_at}}</p> -->
+      <!-- put in a | date to get just the date -->
+
+    {% endfor %}
+    {% if messages %}
+    <div>
+      {% for error in messages %}
+      <p class = 'error'>{{ error }}</p>
+      {% endfor %}
+    </div>
+    {% endif %}
+    <form action = "{% url 'create_review' %}" method = "post">
+      {% csrf_token %}
+      <div>
+        <label>review:</label>
+        <input type = "textarea" name = "content">
+      </div>
+      <div>
+        <label>Rating</label>
+          <select name='rating'>
+            <option value="5">5</option>
+            <option value="4">4</option>
+            <option value="3">3</option>
+            <option value="2">2</option>
+            <option value="1">1</option>
+          </select>
+      </div>
+    <div>
+        <input type="hidden" name="book_id" value="{{ book.id }}">
+        <input type = "submit" value = "Submit Review">
+    </div>
+</form>
+
+  </body>
+</html>

@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
 from django.db import models
 import bcrypt
 
@@ -17,10 +16,10 @@ class UserManager(models.Manager):
             errors.append('Alias can not be blank')
         if len(form_data['email']) == 0:
             errors.append('Email can not be blank')
-        # # make sure theyre not a user in the DB already
-        # user = User.objects.filter(email=form_data['email']).first()
-        # if user:
-        #     errors.append('Email already in use')
+        # make sure theyre not a user in the DB already
+        user = User.objects.filter(email=form_data['email']).first()
+        if user:
+            errors.append('Email already in use')
         if len(form_data['password']) < 4:
             errors.append('Password can not be blank')
         if form_data['password'] != form_data['password_confirmation']:
