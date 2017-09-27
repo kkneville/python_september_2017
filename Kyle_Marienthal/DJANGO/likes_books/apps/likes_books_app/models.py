@@ -10,8 +10,8 @@ class User(models.Model):
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now = True)
 
-    def __str__(self):
-        return '"id:"{} - {} - {}'.format(self.id, self.name, self.email)
+    # def __str__(self):
+    #     return '{} - {}'.format(self.name, self.email)
 
 class Book(models.Model):
     name = models.CharField(max_length = 255)
@@ -21,8 +21,8 @@ class Book(models.Model):
     likes = models.ManyToManyField(User, related_name = 'likes')
     uploader = models.ForeignKey(User, related_name = 'uploader')
 
-    def __str__(self):
-        return '{} - {} - {} - {}'.format(self.id, self.name, self.desc, self.uploader)
+    # def __str__(self):
+    #     return '{} - {} - {}'.format(self.name, self.desc, self.uploader)
 
 # class Like(models.Model):
 #     liked_books = models.ForeignKey(Book, related_name = 'liked_books')
