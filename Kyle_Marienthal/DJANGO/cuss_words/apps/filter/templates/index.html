@@ -24,5 +24,10 @@
       {% csrf_token %}
       <input type="submit" name="reset" value="RESET">
     </form>
+    <form action="{% url 'landing' %}" method="post">
+      {% csrf_token %}
+      <input type="submit" name="login" value="login">
+    </form>
+
   </body>
 </html>

@@ -17,4 +17,5 @@ from django.conf.urls import url, include
 
 urlpatterns = [
     url(r'^', include('apps.filter.urls')),
+    url(r'^log_reg_app', include('apps.log_reg_app.urls')),
 ]
