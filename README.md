@@ -74,9 +74,14 @@ Videos:
  Relations are Hard II:
  - Demo: https://youtu.be/KfLPgTE5f9s
  
+ Break it Down I:
+ - Demo: https://youtu.be/du0gdUGe1N8
+ 
+ Break it Down II:
+ - Demo: https://youtu.be/nFPykkUPCkA
+ 
  Group Projects: 
  - Roshambo: https://youtu.be/r1cDHSA7Uu8
- 
- 
+
  Algorithms:
  - How to: https://youtu.be/va7o8NIaIp4
