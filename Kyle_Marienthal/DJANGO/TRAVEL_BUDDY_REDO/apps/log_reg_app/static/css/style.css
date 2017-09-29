@@ -1,0 +1,14 @@
+body{
+  background-image: url('../img/walrus.jpg');
+  background-repeat: no-repeat;
+  background-position: left top;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+html{
+  color: black;
+}
+.error{
+  color: red;
+}
