@@ -21,9 +21,11 @@ def current_user(request):
 def dashboard(request):
     print '***** youre in the travel dashboard method*****'
     trips = Trip.objects.all()
+    other_users = {User.objects.all().exclude(id=current_user(request).id)}
     context = {
         'current_user' : current_user(request),
-        'trips' : trips
+        'trips' : trips,
+        'other_users' : other_users
     }
     return render(request, 'travels_app/dashboard.html', context)
 
@@ -37,7 +39,7 @@ def add_trip(request):
 def create_trip(request):
     print '***** youre in the travel create_trip method*****'
     user = current_user(request)
-    trip = Trip.objects.create_trip(request.POST, user)
+    trips = Trip.objects.create_trip(request.POST, user)
     return redirect(reverse('dashboard'))
 
 def destination(request, id):

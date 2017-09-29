@@ -44,20 +44,26 @@
 
   <h5>Other User's Travel Plans</h5>
   <table>
-    <tr>
-      <th>Name</th>
-      <th>Destination</th>
-      <th>Trip Starts</th>
-      <th>Trip Ends</th>
-      <th>Do you want to join?</th>
-    </tr>
-    <tr>
-      <td>{{other travelers name}}</td>
-      <td>{{link to where we are going}}</td>
-      <td>{{some date}}</td>
-      <td>{{some date}}</td>
-      <td>{{a 'join' link}}</td>
-    </tr>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Destination</th>
+        <th>Trip Starts</th>
+        <th>Trip Ends</th>
+        <th>Do you want to join?</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in other_users %}
+      <tr>
+        <td>{{ other_users.id }}</td>
+        <td>{link to where we are going}</td>
+        <td>{some date}</td>
+        <td>{some date}</td>
+        <td>{a 'join' link}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
   </table>
 
 
