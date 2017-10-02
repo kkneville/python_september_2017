@@ -43,7 +43,6 @@ class ReviewManager(models.Manager):
 
 
 
-
 class Review(models.Model):
     content = models.TextField()
     rating = models.IntegerField()

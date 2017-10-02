@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Create Item</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+            <div class='container'>
+                    <h1>Create a New Wish List Item</h1>
+                    <form action = "{% url 'create_item' %}" method = "post">
+                        {% csrf_token %}
+                        <div>
+                            <label>Item/Product:</label>
+                            <input type = "text" name = "item">
+                        </div>
+                        <div>
+                            <input type = "submit" value = "Create Wish">
+                        </div>
+                    </form>
+            </div>
+            <!-- messages is just where flash messages save the error messages you made -->
+            {% if messages %}
+            <div>
+                {% for message in messages %}
+                    <p class = 'error'>{{ message }}</p>
+                {% endfor %}
+            </div>
+            {% endif %}
+    </body>
+</html>

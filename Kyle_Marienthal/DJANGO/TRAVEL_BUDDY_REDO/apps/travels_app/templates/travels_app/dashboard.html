@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Travel Dashboard</title>
+</head>
+
+<body>
+
+  <form action="{% url 'logout' %}">
+    {% csrf_token %}
+    <input type="submit" value="Logout">
+  </form>
+
+  <form action="{% url 'dashboard' %}">
+    {% csrf_token %}
+    <input type="submit" value="Home">
+  </form>
+
+  <h1>Hello, {{ current_user.name }}</h1>
+  <h5>Your Trip Schedules</h5>
+  <table>
+    <thead>
+      <tr>
+        <th>Destination</th>
+        <th>Description</th>
+        <th>Trip Starts</th>
+        <th>Trip Ends</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for trip in trips %}
+      <tr>
+        <td>{{trip.destination}}</td>
+        <td>{{trip.description}}</td>
+        <td>{{trip.travel_date_from}}</td>
+        <td>{{trip.travel_date_to}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+
+  <h5>Other User's Travel Plans</h5>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Destination</th>
+        <th>Trip Starts</th>
+        <th>Trip Ends</th>
+        <th>Do you want to join?</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in other_users %}
+      <tr>
+        <td>{{ other_users.id }}</td>
+        <td>{link to where we are going}</td>
+        <td>{some date}</td>
+        <td>{some date}</td>
+        <td>{a 'join' link}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+
+  <form action="{% url 'add_trip' %}">
+    {% csrf_token %}
+    <input type="submit" value="Add Travel Plan">
+  </form>
+
+</body>
+
+</html>
