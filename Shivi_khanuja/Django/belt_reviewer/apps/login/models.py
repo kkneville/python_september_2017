@@ -7,10 +7,10 @@ class UserManager(models.Manager):
     def validate_registration(self,form_data):
         errors = []
 
-        if len(form_data['first_name']) == 0:
-            errors.append("First Name is required.")
-        if len(form_data['last_name']) == 0:
-            errors.append("Last Name is required.")
+        if len(form_data['name']) == 0:
+            errors.append("Name is required.")
+        if len(form_data['alias']) == 0:
+            errors.append("Alias is required.")
         if len(form_data['email']) == 0:
             errors.append("Email is required.")
         if len(form_data['password']) == 0:
@@ -44,8 +44,8 @@ class UserManager(models.Manager):
         hashedpw = bcrypt.hashpw(form_data['password'].encode(), bcrypt.gensalt())
 
         return User.objects.create(
-            first_name= form_data['first_name'],
-            last_name= form_data['last_name'],
+            name= form_data['name'],
+            alias= form_data['alias'],
             email = form_data['email'],
             password= hashedpw,
         )
@@ -57,8 +57,8 @@ class UserManager(models.Manager):
 
 
 class User(models.Model):
-    first_name=models.CharField(max_length=255)
-    last_name=models.CharField(max_length=255)
+    name=models.CharField(max_length=255)
+    alias=models.CharField(max_length=255)
     email=models.CharField(max_length=255)
     password=models.CharField(max_length=255)
     created_at= models.DateTimeField(auto_now_add=True)

@@ -17,7 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^',include('apps.login.urls')),
-    url(r'^',include('apps.main_aap.urls')),
-
+    url(r'^', include('apps.login.urls')),
+    url(r'^book/', include('apps.book_app.urls')),
+    url(r'^reviews/', include('apps.reviews.urls')),
 ]

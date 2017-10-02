@@ -19,11 +19,11 @@
     <h2>Register</h2>
     <form action="{% url 'register' %}" method="POST">
         {% csrf_token %}
-        <label>First Name:</label>
-        <input type="text" name="first_name"/>
+        <label>Name:</label>
+        <input type="text" name="name"/>
 
-        <label>Last Name:</label>
-        <input type="text" name="last_name"/>
+        <label>Alias:</label>
+        <input type="text" name="alias"/>
 
         <label>Email:</label>
         <input type="email" name="email"/>
