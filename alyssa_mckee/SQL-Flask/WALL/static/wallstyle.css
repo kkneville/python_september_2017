@@ -1,0 +1,173 @@
+*{
+	font-family: sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+#main{
+	background-image: url("Shingeki+No+Bobu+Rossu.png");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center top; 
+	width: 100%;
+	padding-top: 100px;
+}
+h1{
+	display: inline-block;
+	width: 500px;
+	color: #C4472D;
+}
+h2{
+	display: inline-block;
+	color: #40170E;
+	margin-right: 20px;
+}
+header{
+	padding: 10px;
+	position: fixed;
+	background: white;
+	width: 100%;
+	border-bottom: 1px solid black;
+}
+header div{
+	margin-top: 5px;
+	display: inline-block;
+	float: right;
+	margin-right: 20px;
+}
+header a{
+	display: inline-block;
+}
+#arrow{
+	position: fixed;
+	left: 20px;
+	bottom: 20px;
+	width: 50px;
+	height: 50px;
+}
+#arrow:hover{
+	bottom: 25px;
+	transform: scale(1.1);
+}
+
+.message_form{
+	
+	vertical-align: top;
+	margin: 0px auto;
+	width: 60%;
+	
+	
+}
+	.message_form textarea{
+		background: white;
+		display: block;
+		width: 100%;
+		height: 100px;
+		border: 3px solid green;
+		margin-top: 2px;
+	}
+	.message_form button{
+		margin-top: 10px;
+		background: #CA3C21;
+		padding: 5px;
+		color: white;
+		border: 0;
+		border-radius: 5px;
+		float: right;
+	}
+	.message_form button:hover{
+		background: #F18034;
+	}
+	.message_form h3{
+		padding: 3px;
+		color: #C4472D;
+		display: inline;
+		background: white;
+		border: 3px solid green;
+	}
+
+.comment_form{
+	padding-left: 80px;
+	vertical-align: top;
+	margin: 0px auto;
+	width: 100%;
+	margin-bottom: 50px;
+	margin-bottom: 100px;
+	
+}
+	.comment_form textarea{
+		padding: 28px 5px 0px 5px;
+		background: white;
+		display: block;
+		width: 100%;
+		height: 70px;
+		border: 3px solid green;
+		margin-top: 2px;
+	}
+	.comment_form button{
+		margin-top: 10px;
+		background: #CA3C21;
+		padding: 5px;
+		color: white;
+		border: 0;
+		border-radius: 5px;
+		float: right;
+	}
+	.comment_form button:hover{
+		background: #F18034;
+	}
+	.comment_form h4{
+		position: relative;
+		top: 26px;
+		padding: 3px;
+		color: #C4472D;
+		display: inline;
+		background: white;
+		border: 3px solid green;
+	}	
+	
+	
+.red{
+	color: #C4472D;
+	
+}
+#messages{
+	padding-top: 40px;
+	height: 4000px;
+	width: 50%;
+	margin: 0px auto;
+}
+	.message{
+		vertical-align: top;
+		margin:50px auto 0px auto;
+		width: 100%;
+		background: white;
+		border: 3px solid #C4472D;
+		word-wrap: break-word;
+	}
+	.message p{
+		margin: 10px;
+		min-height: 50px;
+	}
+	.message h3{
+		padding: 3px;
+	}
+.comments{
+	width: 100%;
+	padding-left: 80px;
+}
+	.comment{
+		
+		background: white;
+		border: 3px solid #C4472D;
+		margin-top: 20px;
+	}
+	.comment p{
+		margin: 10px;
+		min-height: 30px;
+		word-wrap: break-word;
+	}
+	.comment h4{
+		padding: 3px;
+	}

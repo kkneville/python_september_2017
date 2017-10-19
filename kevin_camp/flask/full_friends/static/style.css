@@ -1,0 +1,9 @@
+.container{
+	width:95%;
+	margin: auto;
+}
+table, th, tr, td{
+	margin: 5px;
+	padding: 5px;
+	border: 1pt solid black;
+}

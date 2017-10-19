@@ -1,0 +1,40 @@
+<html>
+<head>
+    <title>List of Services</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static '/css/index.css' %}" media="screen" title="no title" charset="utf-8" />
+</head>
+<body>
+    <h4>Memberships</h4>
+    {% if memberships %}
+        {% for membership in memberships %}
+            <p>Name: {{ membership.service.name }}</p>
+            <p>Cost: {{ membership.service.amount }}</p>
+            <p>Card: {{ membership.credit_card.number }}</p>
+            <a href="{% url 'remove_membership' id=membership.id %}">Remove Membership</a>
+        {% endfor %}
+    {% else %}
+        <p>You do not yet have any memberships.</p>
+    {% endif %}
+
+    <h4>Services Available</h4>
+    {% for service in services %}
+        <p>Name: {{ service.name }}</p>
+        <p>Cost: ${{ service.amount }}</p>
+        <form action="{% url 'create_membership' %}" method="post">
+            {% csrf_token %}
+            <!-- Credit Card -->
+            <select name="credit_card">
+                <option value="" selected="true">Please Select a Card</option>
+                {% for card in user.credit_cards.all %}
+                    <option value="{{ card.id }}">{{ card.number }}</option>
+                {% endfor %}
+            </select>
+
+            <input type="hidden" name="service" value="{{ service.id }}">
+
+            <button type="submit">Sign Up</button>
+        </form>
+    {% endfor %}
+</body>
+</html>

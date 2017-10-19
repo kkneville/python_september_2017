@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>Delete a Course</title>
+</head>
+<body>
+	<h1>Are you suer you want to delete the following course?</h1>
+	<p>Name: {{name}}</p>
+	<p>Description: {{desc}}</p>
+	
+	<form action="{% url 'landing' %}">
+		<button name="choice" value="no">NO</button>
+	</form>
+	<form action="{% url 'process_destroy' id=id %}" method="POST">
+		{% csrf_token %}
+		<button type="submit">Yes! I want to delete this</button>
+	</form>
+</body>
+</html>

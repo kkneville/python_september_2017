@@ -1,0 +1,65 @@
+<html>
+<head>
+    <title>Login and Register</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}" />
+</head>
+<body>
+    {% with messages = get_flashed_messages(category_filter=["register"]) %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <h2>Register</h2>
+    <!-- Registration Form -->
+    <form action="/register" method="post">
+        <!-- First Name -->
+        <label>First Name:</label>
+        <input type="text" name="first_name" />
+
+        <!-- Last Name -->
+        <label>Last Name:</label>
+        <input type="text" name="last_name" />
+
+        <!-- Email -->
+        <label>Email:</label>
+        <input type="email" name="email" />
+
+        <!-- Password -->
+        <label>Password:</label>
+        <input type="password" name="password" />
+
+        <!-- Password Confirmation -->
+        <label>Password Confirmation:</label>
+        <input type="password" name="password_confirmation" />
+
+        <!-- Submit -->
+        <input type="submit" value="Register" />
+    </form>
+    <!-- End Registration Form -->
+    
+    {% with messages = get_flashed_messages(category_filter=["login"]) %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <h2>Login</h2>
+    <!-- Login Form -->
+    <form action="/login" method="post">
+        <!-- Email -->
+        <label>Email:</label>
+        <input type="email" name="email" />
+
+        <!-- Password -->
+        <label>Password:</label>
+        <input type="password" name="password" />
+
+        <!-- Submit -->
+        <input type="submit" value="Register" />
+    </form>
+    <!-- End Login Form -->
+</body>
+</html>

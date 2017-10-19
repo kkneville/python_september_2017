@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<header>
+	
+		<h1>Welcome, {{ user.name }}</h1>
+		
+		<a href="{% url 'add_book' %}">Add Book and Review</a>
+		<a href="{% url 'logout' %}">Logout</a>
+	</header>
+	
+	
+	
+	<div id="reviews">
+		<h2>Recent Book Reviews:</h2>
+		{% for review in reviews %}
+			<div class="review">
+			<h3><a href="{% url 'show_book' id=review.book.id %}">{{review.book.title}}</a></h3>
+			<div class="rating">Rating: {{review.rating}}
+			{% load static %}
+			{% if review.rating > 0 %}
+				<img src="{% static 'review_app/small_star.gif' %}" alt=""/>
+			{%endif%}
+			{% if review.rating > 1 %}
+				<img src="{% static 'review_app/small_star.gif' %}" alt=""/>
+			{%endif%}
+			{% if review.rating > 2 %}
+				<img src="{% static 'review_app/small_star.gif' %}" alt=""/>
+			{%endif%}
+			{% if review.rating > 3 %}
+				<img src="{% static 'review_app/small_star.gif' %}" alt=""/>
+			{%endif%}
+			{% if review.rating > 4 %}
+				<img src="{% static 'review_app/small_star.gif' %}" alt=""/>
+			{%endif%}
+			</div>
+			<a href="{% url 'show_user' id=review.user.id %}">{{review.user.alias}}</a> says: {{review.content}}
+			<p>Posted on:{{review.created_at}}</p>
+			
+			
+			
+		</div>
+		{%endfor%}
+		
+		
+	</div>
+	<hr/>
+	<div id="books">
+	<h2>Other Books with Reviews:</h2>
+	<div class="booklist">
+	<ul>
+		
+		{% for book in books %}
+			<li><a href="{% url 'show_book' id=book.id %}">{{book.title}}</a></li>
+		{%endfor%}
+	</ul>
+	
+	
+	
+	
+	</div>
+	
+	
+	
+	</div>
+</body>
+</html>

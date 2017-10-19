@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html> 
+  <head>
+    <meta charset="utf-8">
+    <title>HTTP Request Response</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		
+//havent looked at this in a while. I'm pretty sure it works... but it might be the one that inifitely loops somewhere...
+//repl.it location: https://repl.it/L0qV/2
+function log(obj){
+	console.log(String(obj));
+}
+
+var LinkedQueue = function(){
+	this.head = null;
+	this.tail = null;
+}
+var Node = function(val){
+	this.value = val;
+	this.next = null;
+}
+LinkedQueue.prototype.enqueue = function(val){
+	if (typeof val  == 'number')
+		var newNode = new Node(val)
+	else
+		var newNode = val;
+	if (this.tail == null){
+		this.head = newNode;
+		this.tail = newNode;
+	}
+	else{
+		this.tail.next = newNode;
+		this.tail = newNode;				
+	}	
+}
+LinkedQueue.prototype.dequeue = function(){
+	if (this.head != null){
+		var takenNode = this.head;
+		this.head = this.head.next;
+		takenNode.next = null;
+		return takenNode;
+	}
+	return null;
+
+}
+
+LinkedQueue.prototype.toString = function(){
+	var string = ""
+	var begining = this.head;
+	if(this.head != null){
+		do{
+			string += String(this.head) + ",";
+			this.enqueue(this.dequeue());
+		} while(this.head != begining);
+	}
+	return "[" + string.substring(0, string.length-1) + "]";
+}
+
+Node.prototype.toString = function(){
+	return "" + this.value;
+}
+console.log("hello world");
+
+var Stack = function(){
+	this.items = []
+	
+}
+Stack.prototype.push = function(val){
+	this.items[this.items.length] = val;
+}
+Stack.prototype.pop = function(){
+	var temp = this.items[this.items.length-1]
+	this.length--;
+	return temp;
+}
+Stack.prototype.top = function(){
+	return this.items[this.items.length-1]
+}
+Stack.prototype.contains = function(val){
+	if (this.top() == val)
+		return true;
+	if(this.items.length == 1)
+		return false;
+	var temp = this.pop();
+	var boolcontains = this.contains(val);
+	this.push(temp);
+	return boolcontains;
+}	
+	
+	</script>
+
+  </body>
+</html>

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Rock Paper Scissors</title>
+	<style>
+		.win{
+			color: green;
+		}
+		.lose{
+			color: red;
+		}
+	
+	</style>
+	
+	
+</head>
+<body>
+	<h3>You are logged in as: {{ name }}</h3>
+	<form action="/">
+		<button>Log Out</button>
+	</form>
+	<div class="stats">
+		<p>Wins: {{ wins }}</p>
+		<p>Losses: {{ losses }}</p>
+		<p>ties {{ ties }}</p>
+	</div>
+	<h1>Rock Paper Scissors</h1>
+	
+	<div>
+	{% with messages = get_flashed_messages()%}
+		{% if messages %}
+			{% for message in messages %}
+				<p {% if message.find("Win") >0 %}
+					class="win"
+					{% endif %}
+					{% if message.find("Lose") >0 %}
+					class="lose"
+					{% endif %}>
+				{{ message }}
+				</p>
+			{% endfor %}
+		{% endif %}
+	{% endwith %}
+	
+	</div>
+	
+	<form action="/process" method="POST">
+		<button name="choice" value="0">Rock</button>
+		<button name="choice" value="1">Paper</button>
+		<button name="choice" value="2">Scissors</button>
+	</form>
+</body>
+</html>

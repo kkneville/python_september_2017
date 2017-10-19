@@ -1,0 +1,28 @@
+1)r"v"
+"denver", "obsessive", "volleyball"
+contains a v anywhere
+
+2) r"^[aeiou]"
+"issue", obsessive, union
+starts with a vowel
+
+3)r"(\w)\1"
+"baseball", issue, mattress, obsessive, rabble,volleyball, 11234566
+any thing containing a double alphanumeric character anywhere in the string
+
+1)r'ss'
+2)r'b\wb'
+3)r'b.+b'
+4)r'a.*e.*i.*o.*u'
+5)r'[aeiou]{2}$'
+	or
+r'[aeiou][aeiou]$'
+
+6)r'^[regula xpsion]+$'
+7)r'^[^regex]+$'
+
+1)r'b.*b'
+2)r'b.?b'
+3)r'io'
+4)r'e$'
+5)r'(\w)\1.*(\w)\2'

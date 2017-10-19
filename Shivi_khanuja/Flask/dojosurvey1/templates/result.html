@@ -1,0 +1,17 @@
+<html>
+<head>
+    
+    <title>Document</title>
+</head>
+<body>
+   
+        <h2>Submitted Info</h2>
+        <p>Name:{{ data.name }}</p>
+        <p>Dojo Location:{{data.location}}</p>
+        <p>Favorite Language:{{data.language}}</p>    
+        <p>Comment:{{data.comment if data.comment != "" else "No comment"}}</p>
+
+
+    
+</body>
+</html>

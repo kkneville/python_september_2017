@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Dashboard</title>
+</head>
+
+<body>
+  <h2>Hello, {{ current_user.name }}</h2>
+  <table>
+    <h4>Your Wish List</h4>
+    {% for wish in whishes %}
+    <tr>
+      <th>Item:</th>
+      <th>Added By:</th>
+      <th>Date Added:</th>
+      <th>Action</th>
+    </tr>
+    <tr>
+      <td><a href="{% url 'show_wish' id=id %}">{{ wish.item }}</a></td>
+      <td>{{ wish.user.name }}</td>
+      <td>{{ wish.created_at }}</td>
+
+      {% if user == wish.user %}
+        <td><a href="{% url 'delete_wish' id=id %}">Delete</a>
+      {% endif %}
+      {% if user != wish.user %}
+        <td><a href="{% url 'remove_wish' id=id %}">Remove from my list</a></td>
+      {% endif %}
+    </tr>
+    {% endfor %}
+  </table>
+
+  <table>
+    <h4>Other user's wish list:</h4>
+    <tr>
+      <th>Item: </th>
+      <th>Added By: </th>
+      <th>Date Added: </th>
+      <th>Action</th>
+    </tr>
+    {% for wish in wishes %}
+    <tr>
+      <td><a href="{% url 'show_wish' id=id %}">{{ wish.item }}</a></td>
+      <td>{{ wish.user.name }}</td>
+      <td>{{ wish.created_at }}</td>
+      <td><a href="{% url 'add_wish' id=id %}">Add to my wishlist</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+
+
+  <form action="{% url 'wish_item' %}">
+    {% csrf_token %}
+    <input type="submit" value="Add new item">
+  </form>
+
+  <form action="{% url 'logout' %}">
+    {% csrf_token %}
+    <input type="submit" value="Logout">
+  </form>
+</body>
+
+</html>

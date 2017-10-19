@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Success Page</title>
+	<style>
+		.message{
+			background: limegreen;
+			border: 1px solid black;
+			width: 70%;
+			margin: 0 auto;
+			display: inline-block;
+		}
+	</style>
+</head>
+<body>
+	<div class="message">
+		<h1>The email address you entered {{ email }} is a VALID email address! Thank you!</h1>
+	</div>
+	<h2>Email Addresses Entered:</h2>
+	<form action="/delete" method="POST">
+		<table>
+			{% for email in data %}
+				<tr>
+					<td>{{email.email}}</td>
+					<td>{{email.date}}</td>
+					<td><button name="id" value="{{ email.id }}">Delete</button></td>
+				</tr>
+			{% endfor %}
+		</table>
+	</form>
+	
+</body>
+</html>

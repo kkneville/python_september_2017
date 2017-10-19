@@ -1,0 +1,26 @@
+<html>
+<head>
+    <title></title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static '/css/index.css' %}" media="screen" title="no title" charset="utf-8" />
+</head>
+<body>
+    <!-- Display All Friends -->
+    <h4>All Friends</h4>
+    {% if friends %}
+        {% for friend in friends %}
+            <p>Name: {{ friend.first_name }} {{ friend.last_name }}</p>
+            <a href="{% url 'remove_friend' id=friend.id %}">Unfriend</a>
+        {% endfor %}
+    {% else %}
+        <p>You haz no friends. *world's smallest violin*</p>
+    {% endif %}
+
+    <!-- Display all other users -->
+    <h4>Other People</h4>
+    {% for person in people %}
+        <p>Name: {{ person.first_name }} {{ person.last_name }}</p>
+        <a href="{% url 'add_friend' id=person.id %}">Add Friend</a>
+    {% endfor %}
+</body>
+</html>

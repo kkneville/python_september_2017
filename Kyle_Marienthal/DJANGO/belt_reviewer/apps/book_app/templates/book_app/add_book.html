@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Add Book</title>
+  </head>
+  <body>
+    <form action= "{% url 'logout' %}">
+      {% csrf_token %}
+      <input type="submit" value="Logout">
+    </form>
+    <form action= "{% url 'dashboard' %}">
+      {% csrf_token %}
+      <input type="submit" value="Home">
+    </form>
+    {{ current_user.email }}
+    <h1>Hey {{ current_user.name }} old buddy, add a new book title and a review:</h1>
+    <!-- {% if messages %} -->
+    <div>
+        {% for message in messages %}
+            <p class = 'error'>{{ message }}</p>
+        {% endfor %}
+    </div>
+    <!-- {% endif %} -->
+    <form action = "{% url 'create_book' %}" method = "post">
+        {% csrf_token %}
+        <div>
+            <label>Book Title:</label>
+            <input type = "text" name = "title">
+        </div>
+        <div>
+            <label>Author:</label>
+            <div>Choose from the list:
+            <select name='added_author'>
+              <option value="this is where the authors go in a loop">this is where the authors go in a loop</option>
+            </select>
+          </div>
+          <div>
+            <label>Or add a new author:</label>
+            <input type = "text" name = "author">
+          </div>
+        </div>
+        <div>
+            <label>review:</label>
+            <input type = "textarea" name = "content">
+        </div>
+        <div>
+          <label>Rating</label>
+        <select name='rating'>
+          <option value="5">5</option>
+          <option value="4">4</option>
+          <option value="3">3</option>
+          <option value="2">2</option>
+          <option value="1">1</option>
+        </select>
+      </div>
+        <div>
+            <input type = "submit" value = "Add Book and Review">
+        </div>
+    </form>
+  </body>
+</html>

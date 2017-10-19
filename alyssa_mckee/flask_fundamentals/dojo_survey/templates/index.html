@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Dojo Survey Index</title>
+	<style>
+	*{
+		margin-bottom: 10px;
+		vertical-align: top;
+	}
+	</style>
+</head>
+<body>
+	<form action="/result" method="POST">
+		<div>
+			<label for="name">Your Name:</label>
+			<input type="text" name="name" id="name">
+		</div>
+		<div>
+			<label for="location">Dojo Location:</label>
+			<select name="location" id="location">
+				<option value="San Jose">San Jose</option>
+				<option value="Dallas">Dallas</option>
+				<option value="Seattle">Seattle</option>
+				<option value="Silicon Valley">Silicon Valley</option>
+				<option value="Washington DC">Washington DC</option>
+				<option value="Chicago">Chicago</option>
+				<option value="Tulsa">Tulsa</option>
+			</select>
+		</div>
+		<div>
+			<label for="language">Favorite Language:</label>
+			<select name="language" id="language">
+				<option value="python">Python</option>
+				<option value="javascript">JavaScript</option>
+				<option value="MySQL">MySQL</option>
+			</select>
+		</div>
+		<div>
+			<label for="comment">Comment (optional):</label>
+			<textarea name="comment" id="comment" cols="30" rows="10"></textarea>
+		</div>
+		<input type="submit" value="button">
+		
+	</form>
+</body>
+</html>

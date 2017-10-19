@@ -1,0 +1,55 @@
+#container {
+    padding: 5px 20px 20px 5px;
+}
+
+#gold {
+
+}
+    #gold input {
+        border: 2px solid black;
+    }
+
+.building {
+    display: inline-block;
+    border: 2px solid black;
+    text-align: center;
+    width: 170px;
+    margin: 5px;
+}
+    .building h5 {
+        padding: 0px;
+        margin: 10px 0px 5px 0px;
+    }
+    .building p {
+        padding: 0px;
+        margin: 10px 0px 10px 0px;
+    }
+    .building button {
+        background: white;
+        border: 2px solid black;
+        box-shadow: 1px 1px 1px black;
+        margin: 15px 0px 10px 0px;
+    }
+
+#activities_label {
+    margin: 5px 0px 5px 0px;
+}
+
+#activities {
+    border: 2px solid black;
+    overflow: scroll;
+    height: 100px;
+    width: 740px;
+}
+    #activities p {
+        margin: 2px 0px 2px 0px;
+    }
+    #activities .green {
+        color: green;
+    }
+    #activities .red {
+        color: red;
+    }
+    #activities .grey {
+        color: grey;
+    }

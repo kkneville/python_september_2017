@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>All Bootcamp Courses</title>
+	<style>
+		label{
+			display: inline-block;
+			width: 150px;
+		}
+		input{
+			width: 250px;
+		}
+		th{
+			background: #BBB
+		}
+		tr:nth-child(2n){
+			background: #EEE
+		}
+		tr:nth-child(2n-1){
+			background: #FFF
+		}
+		.error{
+			color: red;
+		}
+		
+	</style>
+</head>
+<body>
+	<h2>Add a new course</h2>
+	<form action="{% url 'new_course'%}" method="POST">
+	{% csrf_token %}	
+	{% if messages %}
+		<ul>
+		{% for message in messages %}
+			<li class="error">{{message}}</li>
+		{%endfor%}
+		</ul>
+	{%endif%}
+	<div>
+		<label for="name">Name: </label>
+		<input type="text" name="name" id="name">
+	</div>
+	<div>
+		<label for="desc">Description:</label>
+		<input type="text" name="desc" id="desc">
+	</div>
+	
+	<button type="submit">Add</button>
+	</form>
+	
+	<h2>Courses</h2>
+	<table>
+		<tr>
+			<th>Course Name</th>
+			<th>Description</th>
+			<th>Date Added</th>
+			<th>Actions</th>
+		</tr>
+		{% if courses %}
+			
+			{% for course in courses %}
+			<tr>
+				<td>{{course.name}}</td>
+				<td>{{course.desc}}</td>
+				<td>{{course.created_at }}</td>
+				<td><a href="{% url 'destroy_course' id=course.id %}">delete</a></td>
+				</tr>
+			{%endfor%}
+			
+		{%endif%}
+	
+	</table>
+</body>
+</html>
